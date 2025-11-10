@@ -1,0 +1,18 @@
+[Unit]
+Description=My Personal Python HTTP Server
+
+[Service]
+# ExecStart 指定要运行的命令，建议使用绝对路径
+# 你可以通过 `which python3` 命令找到 python3 的绝对路径
+ExecStart=/usr/bin/python3 -m http.server 8080
+
+# WorkingDirectory 指定命令运行的工作目录
+# %h 是一个 systemd 的特殊变量，代表用户的主目录 (e.g., /home/your_username)
+WorkingDirectory=%h
+
+# 如果服务意外失败，自动重启
+Restart=on-failure
+
+[Install]
+# WantedBy=default.target 意味着当用户登录时，这个服务会被启动
+WantedBy=default.target

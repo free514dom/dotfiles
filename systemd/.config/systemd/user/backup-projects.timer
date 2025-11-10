@@ -1,0 +1,9 @@
+[Unit]
+Description=Run backup-projects.sh every 4 hours
+
+[Timer]
+OnCalendar=0/4:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

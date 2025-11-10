@@ -1,0 +1,18 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    // 定义5个标签页, 它们会自动应用上面的模板
+    tab name="Tab 1" focus=true
+    tab name="Tab 2"
+    tab name="Tab 3"
+    tab name="Tab 4"
+    tab name="Tab 5"
+}

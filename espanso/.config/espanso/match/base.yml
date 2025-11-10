@@ -1,0 +1,98 @@
+matches:
+  - trigger: "`core"
+    replace: |-
+      我的核心部署文件只有deploy_final.sh,其他都是扯犊子不要单独裸露出来,我只想运行一下deploy_final.sh就能看到效果,要修改代码或者新增文件请你直接给我完整的代码不要指点我去修改
+
+  - trigger: "`par"
+    replace: |-
+      这里-example参数是什么单词的缩写,我需要知道它的原型（完整单词）才能更好的帮助记忆和理解.
+
+  - trigger: "`def"
+    replace: |-
+      文中术语进行标准解释后举个简单的帮助我理解的现实生活中的例子(请简短一点每个标准解释和简单的例子分别不超过一句话,并且你只用解释你认为需要解释的术语)
+
+  - trigger: "`wrd"
+    replace: |-
+      这英文单词是什么意思?为什么要这么取名,翻译成中文是什么?它的中文和英文近义词和反义词分别有哪些?理解这个单词的常见误区有哪些?顺便请你使用这个单词造两个简单的句子.
+
+  - trigger: "`rule"
+    replace: |-
+      1.不要那么多废话,几句话讲清楚
+      2.不要只给我部分代码
+      3.如果你删除了我源文件里面你觉得没有用的代码或者文字或者注释,一定要通知我
+      4.这是最新的官方文档,我安装的xxx软件也是从最新的release安装的如果你觉得我的太旧了,那么其实真正的原因是你的知识库太旧了,一切以官方文档为准
+      5.我的OS是fedora+sway+fish+neovim+zellij
+
+  - trigger: "bk"
+    replace: |-
+      Example这个词是什么意思？我没有理解到。请你把它掰开，捏碎了揉碎了给我讲
+
+  - trigger: "`tld"
+    replace: |-
+      我没有理解到,请直接给我太长不看 (TL;DR) 版本 | 我没有理解到,请帮我浓缩成极致简短的精华摘要
+
+  - trigger: "`een"
+    replace: |-
+      我想理解为什么 Example 是这个单词的意思，你能解释一下它的词源——把它分解成有意义的部分，比如词根和前缀吗？我不是语言学家，我只是为了创建联系方便理解这个词也方便记忆这个词。(顺便列举它的近义词和反义词和对立词分别有哪些?)(理解这个词的常见误区有哪些?顺便使用这个词进行简单的造句)
+
+  - trigger: "`ecn"
+    replace: |-
+      为什么要取这个名字,请给我分别讲取这几个字的中文名字由来的(注意不要讨论古代文字的例如甲骨文,也不要讨论偏旁和部首等我不是语言学家,我只是为了创建联系方便理解这个名字也方便记忆这个名字)(顺便列举它的近义词和反义词和对立词分别有哪些?)(理解这个词的常见误区有哪些?顺便使用这个词进行简单的造句)
+
+  - trigger: "`tch"
+    replace: |-
+      为一本关于<<minecraft redstone深入浅出>>的书设计一个详细的章节大纲。------[粘贴前面生成的目录].这是LLM给我的学习目录,我已经学完前面的章节了,现在请教我第xxx章：你好，红石！—— 红石系统导论 1.1 什么是红石信号？—— 能量的开与关.
+
+  - trigger: "`2"
+    replace: |-
+      Only translate the English into Chinese：{{clipb}}
+    vars:
+      - name: "clipb"
+        type: "clipboard"
+
+  - trigger: "`c2e"
+    replace: |-
+      Only translate the Chinese into English：{{clipb}}
+    vars:
+      - name: "clipb"
+        type: "clipboard"
+
+  - trigger: "`drive"
+    replace: |-
+      https://drive.proton.me/urls/AD7NJKF8X4#zgRbOsQMqZcp
+
+  - trigger: "`lc"
+    replace: |-
+      https://www.techinterviewhandbook.org/grind75/
+
+  - trigger: "`docker"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/DockerDeepDive.pdf
+
+  - trigger: "`AN"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/AttentionIsAllYouNeed.pdf
+
+  - trigger: "`math"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/CalculusEarlyTranscendentals.pdf
+
+  - trigger: "`git"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/progit.pdf
+
+  - trigger: "`spring"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/SpringinAction5thEdition.pdf
+
+  - trigger: "`cet4-1"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-1.pdf
+
+  - trigger: "`cet4-2"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-2.pdf
+
+  - trigger: "`cet4-3"
+    replace: |-
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-3.pdf
