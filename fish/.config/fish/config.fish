@@ -1,25 +1,16 @@
-# =============================================================================
-#  LOAD SENSITIVE ENVIRONMENT VARIABLES
-# =============================================================================
 if test -f ~/.config/fish/secrets.fish
     source ~/.config/fish/secrets.fish
 end
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 end
 
-# =============================================================================
-#  ALIASES & ENVIRONMENT
-# =============================================================================
 set -gx EDITOR (command -v nvim)
 set -gx VISUAL (command -v nvim)
 
 fish_add_path $HOME/.local/bin
 
 alias cat 'bat --paging=never --style="plain"'
-
-# --- EZA (ls replacement) Aliases ---
 alias ls 'eza --icons --git'
 alias l  'eza --icons --git'
 alias ll 'eza -l --icons --git --header'
@@ -28,9 +19,6 @@ alias lla 'eza -la --icons --git --header'
 alias lt 'eza --tree'
 alias lta 'eza --tree -a'
 
-# =============================================================================
-#  UTILITY FUNCTIONS
-# =============================================================================
 function copy --wraps wl-copy --description "Pipe to wl-copy and notify"
     command wl-copy $argv
     if test $status -eq 0
@@ -38,10 +26,6 @@ function copy --wraps wl-copy --description "Pipe to wl-copy and notify"
     end
 end
 
-# =============================================================================
-#  【核心重构】设备发现与连接
-# =============================================================================
-# 通过 MAC 地址发现设备 IP 的主函数 (已最终修复)
 function get_ip --description "Discovers a device IP using its MAC address"
     if not command -v arp-scan >/dev/null
         echo "错误: 'arp-scan' 命令未找到。请先安装 (e.g., sudo dnf install arp-scan)" >&2
@@ -52,17 +36,14 @@ function get_ip --description "Discovers a device IP using its MAC address"
     set --local mac_address
     switch $device_alias
         case 'pi'
-            # 您的 MAC 地址
             set mac_address 'd8:3a:dd:7e:c5:dc'
         case '*'
             echo "错误: 未知的设备别名 '$device_alias'。" >&2
             return 1
     end
 
-    # 扫描提示信息发送到 stderr
     echo -n "==> 正在扫描 '$device_alias' ($mac_address)... " >&2
 
-    # 【关键修复】使用 grep 代替 string match 来获取整行
     set --local ip (sudo arp-scan -l | grep -i "$mac_address" | awk '{print $1}')
 
     if test -z "$ip"
@@ -72,11 +53,9 @@ function get_ip --description "Discovers a device IP using its MAC address"
     end
 
     echo "找到！" >&2
-    # 只有最终的 IP 地址被输出到 stdout
     echo $ip
 end
 
-# --- 连接树莓派的系列函数 ---
 function s_pi --description "SSH to Raspberry Pi"
     if set --local pi_ip (get_ip pi)
         echo "✅ 发现树莓派 IP: $pi_ip, 正在连接..."
@@ -113,8 +92,6 @@ function vnc_pi --description "VNC to Raspberry Pi"
     end
 end
 
-
-# --- 连接手机的系列函数（静态IP）---
 function s_phone1 --description "SSH to Phone 1 (Static IP)"
     read --prompt-str "确保手机 Termux 的 sshd 已启动。按 Enter 连接..."
     echo ""
@@ -129,8 +106,6 @@ function f_phone1 --description "Mount Phone 1 via sshfs"
     if test $status -eq 0; echo "✅ 成功! 手机1已挂载。"; else; echo "❌ 错误: sshfs 挂载失败。" >&2; end
 end
 
-
-# --- 通用卸载函数 ---
 function u_all --description "Unmount all custom mount points"
     echo "正在尝试卸载..."
     fusermount -u ~/mnt_points/pi_mnt_point 2>/dev/null && echo "✓ 树莓派已卸载" || echo "树莓派未挂载或卸载失败"
