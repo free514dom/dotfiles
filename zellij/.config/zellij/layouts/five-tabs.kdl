@@ -9,7 +9,6 @@ layout {
         }
     }
 
-    // 定义5个标签页, 它们会自动应用上面的模板
     tab name="Tab 1" focus=true
     tab name="Tab 2"
     tab name="Tab 3"
