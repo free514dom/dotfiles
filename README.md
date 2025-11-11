@@ -39,6 +39,8 @@
 - [boss直聘使用教程.]
 - [手动安装archlinux]
 - [比特币买礼品卡订阅AI,Proton,Netflix,Spotify等]
+- [比特币购买Crypto.com等公司发行的借记卡余额]
+- [比特币BitPay等支付处理商去订阅服务,像Chatgpt]
 
 ## 终极付费实用资源
 
