@@ -38,6 +38,7 @@
 - [请教我日常工具及其使用方法]
 - [boss直聘使用教程]
 - [手动安装archlinux]
+- [比特币买礼品卡订阅AI,Proton,Netflix,Spotify等]
 
 ## 终极付费实用资源
 
