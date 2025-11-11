@@ -1,3 +1,4 @@
 scripts/.local/bin/cursor-agent
 project_snapshot.txt
 secrets.fish
+repomix-output.xml
