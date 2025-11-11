@@ -226,9 +226,6 @@ bindsym $mod+n exec sh -c 'repomix --remote https://github.com/free514dom/FinalP
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
 bindsym $mod+n exec sh -c 'repomix $HOME/dotfiles/ -o $HOME/dotfiles/dotfiles-repomix-output.xml && echo "file://$(realpath $HOME/dotfiles/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
-# 功能: 复制 test.txt 的文件 URI 到剪贴板
-bindsym $mod+u exec sh -c 'echo "file://$(realpath $HOME/mnt_points/pi_mnt_point/project_snapshot.txt)" | wl-copy --type text/uri-list'
-
 #
 # Resizing containers:
 #
