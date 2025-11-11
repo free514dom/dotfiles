@@ -255,6 +255,9 @@ sudo npm install -g @openai/codex
 # prettier
 sudo npm install -g prettier
 
+# repomix
+sudo npm install -g repomix
+
 # fish
 sudo dnf -y install fish && chsh -s /usr/bin/fish
 ```
