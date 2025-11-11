@@ -3,6 +3,11 @@ matches:
     replace: |-
       我的核心部署文件只有deploy_final.sh,其他都是扯犊子不要单独裸露出来,我只想运行一下deploy_final.sh就能看到效果,要修改代码或者新增文件请你直接给我完整的代码不要指点我去修改
 
+  - trigger: "`rmix"
+    replace: |-
+      This file contains all the files in the repository combined into one.
+      I want to refactor the code, so please review it first.
+
   - trigger: "`par"
     replace: |-
       这里-example参数是什么单词的缩写,我需要知道它的原型（完整单词）才能更好的帮助记忆和理解.
