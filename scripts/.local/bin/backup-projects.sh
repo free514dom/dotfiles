@@ -34,7 +34,6 @@ function backup_projects() {
     done
 
     tar -I 'gzip --best' -cf "${LOCAL_ARCHIVE_PATH}" \
-        --exclude='dotfiles/project_snapshot.txt' \
         --exclude-vcs \
         -C "$HOME" \
         "${tar_targets[@]}"

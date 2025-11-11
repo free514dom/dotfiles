@@ -165,9 +165,6 @@ bindsym $mod+m exec sh -c 'killall mpv &> /dev/null || true; mpv --shuffle "$HOM
 # 功能: 停止音乐 (使用 Shift 组合键，作为播放的关联操作)
 bindsym $mod+Shift+m exec killall mpv
 
-# 功能: 在后台执行 make_snapshot.sh 脚本，生成项目快照
-bindsym $mod+g exec $HOME/.local/bin/make_snapshot.sh
-
 # 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
 bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
 
