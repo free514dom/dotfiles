@@ -221,10 +221,10 @@ bindsym $mod+Shift+m exec killall mpv
 bindsym $mod+g exec $HOME/.local/bin/make_snapshot.sh
 
 # 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
-bindsym $mod+n exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
+bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
-bindsym $mod+n exec sh -c 'repomix $HOME/dotfiles/ -o $HOME/dotfiles/dotfiles-repomix-output.xml && echo "file://$(realpath $HOME/dotfiles/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
+bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o $HOME/dotfiles/dotfiles-repomix-output.xml && echo "file://$(realpath $HOME/dotfiles/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 #
 # Resizing containers:
