@@ -214,6 +214,9 @@ sudo dnf -y copr enable zhullyb/v2rayA
 sudo dnf -y install v2ray v2raya
 sudo systemctl enable --now v2raya
 
+# copyq
+sudo dnf -y install copyq
+
 # eza
 sudo dnf -y install eza
 
