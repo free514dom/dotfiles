@@ -32,7 +32,6 @@ exec firefox
 # 1. 启动 Ghostty
 exec ghostty -e zellij
 
-exec $HOME/.local/bin/clip-history.sh
 # 2. 匹配 app_id 为 com.mitchellh.ghostty 的窗口，并将其移动到暂存区
 for_window [app_id="com.mitchellh.ghostty"] move scratchpad
 
