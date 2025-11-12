@@ -76,6 +76,7 @@
 - [openwrt](https://github.com/openwrt)
 - [GTNH](https://github.com/GTNewHorizons)
 - [GitHub排名](https://github.com/EvanLi/Github-Ranking)
+- [精选命令行工具](https://github.com/agarrharr/awesome-cli-apps)
 - [Pixel Magisk VoTEL 模块](https://github.com/CHN-MuXin/MagiskModuleEnableChinaForVoTELtoPIxel)
 - [将本地项目仓库打包单一文件给AI](https://github.com/yamadashy/repomix)
 - [Minecraft wiki](https://minecraft.wiki)
