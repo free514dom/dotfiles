@@ -64,7 +64,7 @@ matches:
 
   - trigger: "`drive"
     replace: |-
-      https://drive.proton.me/urls/AD7NJKF8X4#zgRbOsQMqZcp
+      https://drive.proton.me/urls/3EW4VWDC8M#g1f6F4RLbGEQ
 
   - trigger: "`lc"
     replace: |-
