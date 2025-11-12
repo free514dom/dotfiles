@@ -261,15 +261,3 @@ sudo npm install -g repomix
 # fish
 sudo dnf -y install fish && chsh -s /usr/bin/fish
 ```
-
-# Android
-
-```bash
-qwq
-```
-
-# IOS
-
-```bash
-qwq
-```
