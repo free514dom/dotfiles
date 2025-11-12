@@ -1,0 +1,11 @@
+swap_floating_layout {
+    // 仅为第一个浮动窗格定义大小和位置
+    floating_panes max_panes=1 {
+        pane {
+            x "10%"
+            y "10%"
+            width "80%"
+            height "80%"
+        }
+    }
+}
