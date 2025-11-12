@@ -28,6 +28,9 @@ exec fcitx5 -d
 # 启动 Firefox
 exec firefox
 
+# 启动剪贴板管理器
+exec copyq
+
 # 剪贴板监控与通知
 exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
 
