@@ -90,6 +90,7 @@
 - [Leetcode](https://leetcode.com)
 - [小白Debug](https://space.bilibili.com/302188068?spm_id_from=333.337.0.0)
 - [minecraft编程](https://fabricmc.net)
+- [云服务,github学生包200美金额度](digitalocean.com)
 
 # Fedora
 
