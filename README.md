@@ -267,3 +267,9 @@ sudo dnf -y install fish && chsh -s /usr/bin/fish
 ```bash
 qwq
 ```
+
+# IOS
+
+```bash
+qwq
+```
