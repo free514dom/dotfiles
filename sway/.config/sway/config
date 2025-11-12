@@ -176,6 +176,8 @@ bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalP
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
 bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
+# Toggle CopyQ main window
+bindsym $mod+g exec copyq toggle
 
 # 缩放模式
 mode "resize" {
