@@ -4,8 +4,8 @@ swap_floating_layout {
         pane {
             x "10%"
             y "10%"
-            width "80%"
-            height "80%"
+            width "95%"
+            height "95%"
         }
     }
 }
