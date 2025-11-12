@@ -1,11 +1,10 @@
 swap_floating_layout {
-    // 仅为第一个浮动窗格定义大小和位置
     floating_panes max_panes=1 {
         pane {
-            x "10%"
-            y "10%"
-            width "95%"
-            height "95%"
+            x "2.5%"    // 左右各留 2.5% 的边距
+            y "2.5%"    // 上下各留 2.5% 的边距
+            width "95%" // 宽度为屏幕的 95%
+            height "95%"// 高度为屏幕的 95%
         }
     }
 }
