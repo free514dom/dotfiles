@@ -28,6 +28,9 @@ exec fcitx5 -d
 # 启动 Firefox
 exec firefox
 
+# 剪贴板监控与通知
+exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
+
 ### V2P 新增：开机自启动 Ghostty 并将其发送到暂存区 ###
 # 1. 启动 Ghostty
 exec ghostty -e zellij
