@@ -11,11 +11,11 @@ set -gx VISUAL (command -v nvim)
 fish_add_path $HOME/.local/bin
 
 alias cat 'bat --paging=never --style="plain"'
-alias ls 'eza --icons --git'
-alias l  'eza --icons --git'
-alias ll 'eza -l --icons --git --header'
-alias la 'eza -a --icons --git'
-alias lla 'eza -la --icons --git --header'
+alias ls 'eza --git'
+alias l  'eza --git'
+alias ll 'eza -l --git --header'
+alias la 'eza -a --git'
+alias lla 'eza -la --git --header'
 alias lt 'eza --tree'
 alias lta 'eza --tree -a'
 
