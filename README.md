@@ -168,6 +168,9 @@ sudo dnf -y install ripgrep
 # bat
 sudo dnf -y install bat
 
+# starship
+sudo dnf -y copr enable atim/starship && sudo dnf -y install starship
+
 # bottom
 sudo dnf -y copr enable atim/bottom && sudo dnf -y install bottom
 
