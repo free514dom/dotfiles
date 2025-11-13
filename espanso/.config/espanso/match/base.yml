@@ -72,32 +72,32 @@ matches:
 
   - trigger: "`docker"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/DockerDeepDive.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/DockerDeepDive.pdf
 
   - trigger: "`AN"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/AttentionIsAllYouNeed.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/AttentionIsAllYouNeed.pdf
 
   - trigger: "`math"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/CalculusEarlyTranscendentals.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/CalculusEarlyTranscendentals.pdf
 
   - trigger: "`git"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/progit.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/progit.pdf
 
   - trigger: "`spring"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/SpringinAction5thEdition.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/SpringinAction5thEdition.pdf
 
   - trigger: "`cet4-1"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-1.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/2024-12-CET4-1.pdf
 
   - trigger: "`cet4-2"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-2.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/2024-12-CET4-2.pdf
 
   - trigger: "`cet4-3"
     replace: |-
-      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/bookshelf/2024-12-CET4-3.pdf
+      http://localhost:8080/.local/share/pdfjs-dist/web/viewer.html?file=/MyPublic/bookshelf/2024-12-CET4-3.pdf
