@@ -63,6 +63,8 @@ require("lazy").setup({
             require("gitsigns").setup()
         end,
     },
+    -- 我在这里添加了 lazygit 插件
+    { "kdheepak/lazygit.nvim",         cmd = "LazyGit" },
     {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
@@ -203,6 +205,10 @@ vim.keymap.set(
     "<cmd>lua require('telescope.builtin').help_tags()<cr>",
     { desc = "查找帮助文档" }
 )
+
+-- 我在这里添加了 lazygit 快捷键
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
+
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 vim.keymap.set({ "n", "v" }, "<leader>fm", function()
