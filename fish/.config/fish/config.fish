@@ -24,6 +24,7 @@ alias lta 'eza --tree -a'
 function check_mypublic_dir --on-variable PWD
     set target_dir "$HOME/MyPublic"
     if test "$PWD" = "$target_dir"
+        set_color yellow
         echo "已进入 MyPublic 目录,执行pull_mypublic.sh拉取云端更新"
     end
 end
