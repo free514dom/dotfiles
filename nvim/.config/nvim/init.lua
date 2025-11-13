@@ -47,7 +47,18 @@ require("lazy").setup({
         end,
     },
 
-    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("telescope").setup({
+                defaults = {
+                    -- 这样即使使用 find 命令, 也会忽略 .git 目录
+                    file_ignore_patterns = { "%.git/" },
+                },
+            })
+        end,
+    },
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -63,7 +74,7 @@ require("lazy").setup({
             require("gitsigns").setup()
         end,
     },
-    { "kdheepak/lazygit.nvim",         cmd = "LazyGit" },
+    { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
     {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
@@ -190,7 +201,10 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
-vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "查找文件" })
+vim.keymap.set("n", "<leader><leader>", function()
+    require("telescope.builtin").find_files({ hidden = true })
+end, { desc = "查找文件 (含隐藏)" })
+
 vim.keymap.set(
     "n",
     "<leader>fg",
