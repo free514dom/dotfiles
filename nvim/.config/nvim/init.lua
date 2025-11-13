@@ -190,7 +190,6 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- 我将这里的 <leader>ff 修改为 <leader><leader>
 vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "查找文件" })
 vim.keymap.set(
     "n",
@@ -216,12 +215,5 @@ end, { desc = "格式化文件" })
 vim.keymap.set("n", "<leader>w", function()
     vim.opt.wrap = not vim.opt.wrap:get()
 end, { desc = "切换自动换行" })
-
-vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "移动到左侧窗口" })
-vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "移动到右侧窗口" })
-vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "移动到上方窗口" })
-vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "移动到下方窗口" })
-vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "垂直分割窗口" })
-vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "水平分割窗口" })
 
 vim.cmd("colorscheme tokyonight")
