@@ -205,19 +205,22 @@ vim.keymap.set("n", "<leader><leader>", function()
     require("telescope.builtin").find_files({ hidden = true })
 end, { desc = "查找文件 (含隐藏)" })
 
+-- *** 修改过的快捷键 ***
 vim.keymap.set(
     "n",
-    "<leader>fg",
+    "<leader>0",
     "<cmd>lua require('telescope.builtin').live_grep()<cr>",
     { desc = "全局文本搜索" }
 )
-vim.keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
+vim.keymap.set("n", "<leader>9", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
 vim.keymap.set(
     "n",
-    "<leader>fh",
+    "<leader>8",
     "<cmd>lua require('telescope.builtin').help_tags()<cr>",
     { desc = "查找帮助文档" }
 )
+-- ********************
+
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
