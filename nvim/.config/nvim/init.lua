@@ -132,9 +132,11 @@ require("lazy").setup({
                 map("n", "K", vim.lsp.buf.hover, "显示悬浮文档")
                 map("n", "gi", vim.lsp.buf.implementation, "跳转到实现")
                 map("n", "gr", vim.lsp.buf.references, "查找引用")
-                map("n", "<leader>ca", vim.lsp.buf.code_action, "代码操作")
-                map("n", "<leader>rn", vim.lsp.buf.rename, "重命名符号")
-                map({ "n", "v" }, "<leader>df", vim.diagnostic.open_float, "显示诊断信息")
+                -- *** 修改过的LSP快捷键 ***
+                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作")
+                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号")
+                map({ "n", "v" }, "<leader>5", vim.diagnostic.open_float, "显示诊断信息")
+                -- ***********************
             end)
 
             require("mason").setup({})
@@ -205,7 +207,6 @@ vim.keymap.set("n", "<leader><leader>", function()
     require("telescope.builtin").find_files({ hidden = true })
 end, { desc = "查找文件 (含隐藏)" })
 
--- *** 修改过的快捷键 ***
 vim.keymap.set(
     "n",
     "<leader>0",
@@ -219,17 +220,15 @@ vim.keymap.set(
     "<cmd>lua require('telescope.builtin').help_tags()<cr>",
     { desc = "查找帮助文档" }
 )
--- ********************
-
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
+vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
-vim.keymap.set({ "n", "v" }, "<leader>fm", function()
+vim.keymap.set({ "n", "v" }, "<leader>4", function()
     require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "格式化文件" })
 
-vim.keymap.set("n", "<leader>w", function()
+vim.keymap.set("n", "<leader>3", function()
     vim.opt.wrap = not vim.opt.wrap:get()
 end, { desc = "切换自动换行" })
 
