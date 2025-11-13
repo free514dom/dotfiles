@@ -269,4 +269,10 @@ sudo npm install -g repomix
 
 # fish
 sudo dnf -y install fish && chsh -s /usr/bin/fish
+
+# flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Anki
+flatpak install flathub net.ankiweb.Anki
 ```
