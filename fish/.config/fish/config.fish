@@ -25,7 +25,7 @@ function check_mypublic_dir --on-variable PWD
     set target_dir "$HOME/MyPublic"
     if test "$PWD" = "$target_dir"
         set_color yellow
-        echo "已进入 MyPublic 目录,执行pull_mypublic.sh拉取云端更新"
+        echo "已进入 MyPublic 目录,执行>>>>> pull_mypublic.sh <<<<<拉取云端更新"
     end
 end
 
