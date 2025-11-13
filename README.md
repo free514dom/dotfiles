@@ -6,7 +6,7 @@
 - [英语4级备考(目标:2025年12月考试)]
 - [毕业设计:藏红花培育系统]
 - [技术能力提升(主攻后端,备战实习/秋招)]
-- [学习GitHub Actions CI/CD]
+- [学习GitHubActions CI/CD]
 
 ### Waiting
 
