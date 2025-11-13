@@ -19,6 +19,19 @@ alias lla 'eza -la --git --header'
 alias lt 'eza --tree'
 alias lta 'eza --tree -a'
 
+# 文件名: ~/.config/fish/functions/check_mypublic_dir.fish
+
+function check_mypublic_dir --on-variable PWD
+    # 修正：你写的 $/HOME 可能是 $HOME 的笔误
+    # $HOME 是指向你家目录的环境变量，例如 /home/your_user_name
+    set target_dir "$HOME/MyPublic"
+
+    # 检查当前目录是否等于目标目录
+    if test "$PWD" = "$target_dir"
+        echo "Hello"
+    end
+end
+
 function copy --wraps wl-copy --description "Pipe to wl-copy and notify"
     command wl-copy $argv
     if test $status -eq 0
