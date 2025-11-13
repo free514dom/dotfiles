@@ -21,11 +21,29 @@ alias lta 'eza --tree -a'
 
 # 文件名: ~/.config/fish/functions/check_mypublic_dir.fish
 
+# 文件名: ~/.config/fish/functions/check_mypublic_dir.fish
+
 function check_mypublic_dir --on-variable PWD
     set target_dir "$HOME/MyPublic"
+
     if test "$PWD" = "$target_dir"
+        # 1. 设置为黄色，并打印第一部分。
+        #    使用 'echo -n' 来确保不换行。
         set_color yellow
-        echo "已进入 MyPublic 目录,执行>>>>> pull_mypublic.sh <<<<<拉取云端更新"
+        echo -n "已进入 MyPublic 目录,执行"
+
+        # 2. 设置为红色，并打印重点部分（同样不换行）。
+        set_color red
+        echo -n ">>>>> pull_mypublic.sh <<<<<"
+
+        # 3. 再次设置为黄色，并打印最后一部分。
+        #    这次使用 'echo'，它会自动在末尾加上换行符。
+        set_color yellow
+        echo "拉取云端更新."
+
+        # 4. 恢复终端的默认颜色，这是一个非常好的习惯，
+        #    避免后续的命令或提示符颜色被意外改变。
+        set_color normal
     end
 end
 
