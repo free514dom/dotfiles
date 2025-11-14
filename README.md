@@ -4,28 +4,21 @@
 
 - [润]
 - [毕设]
-- [LeetCode]
+- [LeetCode](https://techinterviewhandbook.org/grind75)
 - [雅思]
 
 ### Waiting
 
 - [学习GitHubActions CI/CD]
-- [理解这个世界的钱究竟是怎么来的](https://www.youtube.com/watch?v=D-bYcvRknGM)
 - [时间/购物/食品/交通/信息/金融/用电/电器/电子/药品安全,全部用非国产]
 - [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
 - [学习macOS基础](https://edu.gcfglobal.org/en/macosbasics)
 - [学习Email基础](https://edu.gcfglobal.org/en/topics/emailbasics)
-- [完成Grind75](https://techinterviewhandbook.org/grind75)
-- [spring boot教程](https://youtube.com/watch?v=gJrjgg1KVL4)
-- [存钱预计9000元用作求职基金]
+- [完成Grind75]- [spring boot教程]
 - [阅读w3schools.com的DSA教程(英文版本)]
-- [学会HiddifyCli]
-- [购买ThinkpadX220更换硬件,学习为Build PC做准备]
-- [玩PVE虚拟机]
-- [出售我的二手闲置物品例如手机]
-- [玩转炒股模拟器，挖矿模拟器]
 - [尝试openai浏览器](https://chatgpt.com/atlas)
 - [学习游戏搬砖]
+- [spring boot教程](https://youtube.com/watch?v=gJrjgg1KVL4)
 
 ## AI Prompt Memo
 
