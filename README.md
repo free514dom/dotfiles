@@ -27,7 +27,6 @@
 - [闲鱼Cursor,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
 - [闲鱼kiro激活码](https://m.tb.cn/h.Sd3S03k?tk=bfal4FnIW70)
 - [闲鱼美国教育邮箱](https://m.tb.cn/h.SdJIkAL?tk=qX8J4FOM7eI)
-- [乐乐课堂](https://pan.baidu.com/s/1Gltyjb9UaBmG7RWEhHupRw?pwd=6z4c)
 - [tiktok运营](https://youtube.com/watch?v=CzVcG6GfuPk)
 - [CET4/6真题](https://pan.baidu.com/share/init?surl=_L6y0xqAq_npuLKYmB_Wmg&pwd=x6tq)
 - [java真实简历](https://pan.baidu.com/s/1RmYOx8E2dYdyyjDiCUyw6Q?pwd=6688#list/path=%2F)
@@ -40,7 +39,6 @@
 - [mitce机场](https://mitce.net)
 - [nb机场](https://6.66jc.top)
 - [VPNHotspot](https://github.com/Mygod/VPNHotspot)
-- [LineageOS热点分享VPN](https://lineageos.org)
 - [GPU租用学习AI](https://vast.ai)
 
 ## 书签
@@ -67,7 +65,6 @@
 - [在线汇编学习](https://cpulator.01xz.net)
 - [在线格式转换](https://convertio.co)
 - [软件平替](https://alternativeto.net)
-- [WeActStudio](https://github.com/WeActStudio/WeActStudio.MiniSTM32F4x1)
 - [Leetcode](https://leetcode.com)
 - [小白Debug](https://space.bilibili.com/302188068?spm_id_from=333.337.0.0)
 - [minecraft编程](https://fabricmc.net)
