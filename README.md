@@ -3,14 +3,13 @@
 ### Running
 
 - [润]
-- [IQ EQ UP UP UP Plan]
-- [英语4级备考(目标:2025年12月考试)]
-- [毕业设计:藏红花培育系统]
-- [技术能力提升(主攻后端,备战实习/秋招)]
-- [学习GitHubActions CI/CD]
+- [毕设]
+- [LeetCode]
+- [雅思]
 
 ### Waiting
 
+- [学习GitHubActions CI/CD]
 - [这个世界的运作逻辑究竟是如何的]
 - [理解这个世界的钱究竟是怎么来的](https://www.youtube.com/watch?v=D-bYcvRknGM)
 - [时间/购物/食品/交通/信息/金融/用电/电器/电子/药品安全,全部用非国产]
