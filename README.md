@@ -25,7 +25,6 @@
 - [出售我的二手闲置物品例如手机]
 - [玩转炒股模拟器，挖矿模拟器]
 - [尝试openai浏览器](https://chatgpt.com/atlas)
-- [考雅思]
 - [学习游戏搬砖]
 
 ## AI Prompt Memo
@@ -37,9 +36,6 @@
 - [请教我日常工具及其使用方法]
 - [boss直聘使用教程]
 - [手动安装archlinux]
-- [比特币买礼品卡订阅AI,Proton,Netflix,Spotify等]
-- [比特币购买Crypto.com等公司发行的借记卡余额]
-- [比特币BitPay等支付处理商去订阅服务,像Chatgpt]
 
 ## 终极付费实用资源
 
