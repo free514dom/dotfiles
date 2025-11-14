@@ -24,9 +24,7 @@
 
 ## 终极付费实用资源
 
-- [闲鱼Cursor,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
-- [闲鱼kiro激活码](https://m.tb.cn/h.Sd3S03k?tk=bfal4FnIW70)
-- [闲鱼美国教育邮箱](https://m.tb.cn/h.SdJIkAL?tk=qX8J4FOM7eI)
+- [闲鱼Cursor,教育邮箱,kiro激活码,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
 - [tiktok运营](https://youtube.com/watch?v=CzVcG6GfuPk)
 - [CET4/6真题](https://pan.baidu.com/share/init?surl=_L6y0xqAq_npuLKYmB_Wmg&pwd=x6tq)
 - [java真实简历](https://pan.baidu.com/s/1RmYOx8E2dYdyyjDiCUyw6Q?pwd=6688#list/path=%2F)
