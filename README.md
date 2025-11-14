@@ -10,20 +10,20 @@
 ### Waiting
 
 - [学习GitHubActions CI/CD]
-- [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
-- [学习macOS基础](https://edu.gcfglobal.org/en/macosbasics)
-- [学习Email基础](https://edu.gcfglobal.org/en/topics/emailbasics)
 - [完成Grind75]- [spring boot教程]
 - [阅读w3schools.com的DSA教程(英文版本)]
-- [尝试openai浏览器](https://chatgpt.com/atlas)
 - [学习游戏搬砖]
-- [spring boot教程](https://youtube.com/watch?v=gJrjgg1KVL4)
 - [我想实现一个围绕spring boot的完整项目,我将完成它作为我的面试实习项目(我希望不是烂大街的项目),!!!!重点一定要放在中国小公司java程序员最常见最真实的工作部分,我的学历是民办本科不太可能去中大厂!!!!,请先分成多个阶段,然后每个阶段分成多个的小任务,任务一定要划小不能再小的那种(我需要你之后一步一步带我做,但是现在先不做忙实现先划分一个具体的清单,我们采用一个最推荐最主流的开发策略,开发模式绝对不能采用瀑布开发,开发周期非常短,只有2个月,并且我还要并行刷Grind75(一个精选的LeetCode题集))和准备八股文. -------------------------我已经完成了这个项目我能不能添加AI功能]
 - [python/java软件测试工程师学习路线]
 - [boss直聘使用教程]
 
 ## 书签
 
+- [尝试openai浏览器](https://chatgpt.com/atlas)
+- [spring boot教程](https://youtube.com/watch?v=gJrjgg1KVL4)
+- [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
+- [学习macOS基础](https://edu.gcfglobal.org/en/macosbasics)
+- [学习Email基础](https://edu.gcfglobal.org/en/topics/emailbasics)
 - [闲鱼Cursor,教育邮箱,kiro激活码,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
 - [tiktok运营](https://youtube.com/watch?v=CzVcG6GfuPk)
 - [CET4/6真题](https://pan.baidu.com/share/init?surl=_L6y0xqAq_npuLKYmB_Wmg&pwd=x6tq)
