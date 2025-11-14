@@ -10,7 +10,6 @@
 ### Waiting
 
 - [学习GitHubActions CI/CD]
-- [这个世界的运作逻辑究竟是如何的]
 - [理解这个世界的钱究竟是怎么来的](https://www.youtube.com/watch?v=D-bYcvRknGM)
 - [时间/购物/食品/交通/信息/金融/用电/电器/电子/药品安全,全部用非国产]
 - [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
