@@ -22,7 +22,7 @@
 - [python/java软件测试工程师学习路线]
 - [boss直聘使用教程]
 
-## 终极付费实用资源
+## 书签
 
 - [闲鱼Cursor,教育邮箱,kiro激活码,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
 - [tiktok运营](https://youtube.com/watch?v=CzVcG6GfuPk)
@@ -38,9 +38,6 @@
 - [nb机场](https://6.66jc.top)
 - [VPNHotspot](https://github.com/Mygod/VPNHotspot)
 - [GPU租用学习AI](https://vast.ai)
-
-## 书签
-
 - [最小化bilibili](https://addons.mozilla.org/firefox/addon/minimal-bilibili)
 - [bilibili英文版本](https://addons.mozilla.org/firefox/addon/bilibili-to-english)
 - [广告拦截器](https://addons.mozilla.org/firefox/addon/adguard-adblocker)
