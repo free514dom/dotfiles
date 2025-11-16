@@ -17,7 +17,7 @@
 
 ## 书签
 
-- [阅读w3schools的DSA教程(英文版本)](https://www.w3schools.com/dsa/index.php)
+- [阅读w3schools的DSA教程(English Version)](https://www.w3schools.com/dsa/index.php)
 - [尝试openai浏览器](https://chatgpt.com/atlas)
 - [spring boot教程](https://youtube.com/watch?v=gJrjgg1KVL4)
 - [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
