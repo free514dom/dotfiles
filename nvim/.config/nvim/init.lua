@@ -89,6 +89,8 @@ require("lazy").setup({
 
     { "tpope/vim-repeat" },
 
+    { "pocco81/auto-save.nvim",  event = "VeryLazy", opts = {} }, -- 添加了自动保存插件
+
     {
         "ggandor/leap.nvim",
         event = "VeryLazy",
