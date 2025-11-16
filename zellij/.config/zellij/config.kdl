@@ -157,7 +157,7 @@ keybinds clear-defaults=true {
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
         
-        // START: Added by Assistant (Moved to the correct block)
+        // Ctrl+数字键切换标签页
         bind "Ctrl 1" { GoToTab 1; SwitchToMode "normal"; }
         bind "Ctrl 2" { GoToTab 2; SwitchToMode "normal"; }
         bind "Ctrl 3" { GoToTab 3; SwitchToMode "normal"; }
@@ -167,6 +167,10 @@ keybinds clear-defaults=true {
         bind "Ctrl 7" { GoToTab 7; SwitchToMode "normal"; }
         bind "Ctrl 8" { GoToTab 8; SwitchToMode "normal"; }
         bind "Ctrl 9" { GoToTab 9; SwitchToMode "normal"; }
+        
+        // START: Added by Assistant (New request)
+        // 使用 Ctrl+` 切换浮动窗口的显示/隐藏
+        bind "Ctrl `" { ToggleFloatingPanes; SwitchToMode "normal"; }
         // END: Added by Assistant
     }
     shared_except "locked" "move" {
