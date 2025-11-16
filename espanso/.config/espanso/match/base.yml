@@ -5,7 +5,7 @@ matches:
 
   - trigger: "`leetcode"
     replace: |-
-      怎么做这道题目我第一次写leetcode,只告诉我思考方式和尝试的思维链不要解出来了
+      怎么做这道题目这是我写的第一道算法题,只告诉我思考方式和尝试的思维链不要解出来了
 
   - trigger: "`hello"
     replace: |-
