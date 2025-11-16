@@ -1,3 +1,5 @@
+-- nvim/.config/nvim/init.lua
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -133,9 +135,9 @@ require("lazy").setup({
                 map("n", "gi", vim.lsp.buf.implementation, "跳转到实现")
                 map("n", "gr", vim.lsp.buf.references, "查找引用")
                 -- *** 修改过的LSP快捷键 ***
-                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作")
-                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号")
-                map({ "n", "v" }, "<leader>5", vim.diagnostic.open_float, "显示诊断信息")
+                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作") -- (保持不变)
+                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号") -- (保持不变)
+                map({ "n", "v" }, "<leader>8", vim.diagnostic.open_float, "显示诊断信息") -- (从 leader+5 移动到 leader+8)
                 -- ***********************
             end)
 
@@ -203,33 +205,31 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
-vim.keymap.set("n", "<leader><leader>", function()
+-- =========== 修改后的快捷键 =============
+-- 保存文件
+vim.keymap.set("n", "<leader><leader>", "<cmd>w<cr>", { desc = "保存文件" })
+
+-- Telescope
+vim.keymap.set("n", "<leader>2", function()
     require("telescope.builtin").find_files({ hidden = true })
 end, { desc = "查找文件 (含隐藏)" })
+vim.keymap.set("n", "<leader>3", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
+vim.keymap.set("n", "<leader>4", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索" })
+vim.keymap.set("n", "<leader>5", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档" })
 
-vim.keymap.set(
-    "n",
-    "<leader>0",
-    "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-    { desc = "全局文本搜索" }
-)
-vim.keymap.set("n", "<leader>9", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
-vim.keymap.set(
-    "n",
-    "<leader>8",
-    "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-    { desc = "查找帮助文档" }
-)
-vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
-
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
-vim.keymap.set({ "n", "v" }, "<leader>4", function()
+-- 其他顺移的快捷键
+vim.keymap.set({ "n", "v" }, "<leader>9", function()
     require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "格式化文件" })
-
-vim.keymap.set("n", "<leader>3", function()
+vim.keymap.set("n", "<leader>0", function()
     vim.opt.wrap = not vim.opt.wrap:get()
 end, { desc = "切换自动换行" })
+-- =====================================
+
+-- 未发生冲突，保持不变的快捷键
+vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
+
 
 vim.cmd("colorscheme tokyonight")
