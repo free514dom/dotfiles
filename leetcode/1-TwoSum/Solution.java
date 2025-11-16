@@ -1,4 +1,5 @@
-// 1. Two Sum
+//生词 
+//
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         
