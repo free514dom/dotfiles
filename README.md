@@ -23,7 +23,7 @@
 - [docker代理容器](https://hub.docker.com/r/metacubex/mihomo?uuid=5E6C6831-A11E-4EA1-9BC0-42B9251D1A26)
 - [学习macOS基础](https://edu.gcfglobal.org/en/macosbasics)
 - [学习Email基础](https://edu.gcfglobal.org/en/topics/emailbasics)
-- [闲鱼Cursor,教育邮箱,kiro激活码,Augment Code,Gemini,windsurf,codex cli,github copilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
+- [闲鱼Cursor,教育邮箱,kiro激活码,Augment Code,Gemini,windsurf,codex cli,GitHubCopilot](https://m.tb.cn/h.SdppiAF?tk=6jo14Fk9LXN)
 - [tiktok运营](https://youtube.com/watch?v=CzVcG6GfuPk)
 - [CET4/6真题](https://pan.baidu.com/share/init?surl=_L6y0xqAq_npuLKYmB_Wmg&pwd=x6tq)
 - [java真实简历](https://pan.baidu.com/s/1RmYOx8E2dYdyyjDiCUyw6Q?pwd=6688#list/path=%2F)
