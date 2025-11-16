@@ -3,6 +3,10 @@ matches:
     replace: |-
       我的核心部署文件只有deploy_final.sh,其他都是扯犊子不要单独裸露出来,我只想运行一下deploy_final.sh就能看到效果,要修改代码或者新增文件请你直接给我完整的代码不要指点我去修改
 
+  - trigger: "`leetcode"
+    replace: |-
+      怎么做这道题目,只告诉我思考方式和尝试的思维链不要解出来了
+
   - trigger: "`hello"
     replace: |-
       不讲原理,教我如何最简单的使用github action.
