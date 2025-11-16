@@ -156,22 +156,22 @@ keybinds clear-defaults=true {
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+
+        // START: Modified by Assistant
+        // Alt+数字键切换标签页
+        bind "Alt 1" { GoToTab 1; SwitchToMode "normal"; }
+        bind "Alt 2" { GoToTab 2; SwitchToMode "normal"; }
+        bind "Alt 3" { GoToTab 3; SwitchToMode "normal"; }
+        bind "Alt 4" { GoToTab 4; SwitchToMode "normal"; }
+        bind "Alt 5" { GoToTab 5; SwitchToMode "normal"; }
+        bind "Alt 6" { GoToTab 6; SwitchToMode "normal"; }
+        bind "Alt 7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "Alt 8" { GoToTab 8; SwitchToMode "normal"; }
+        bind "Alt 9" { GoToTab 9; SwitchToMode "normal"; }
         
-        // Ctrl+数字键切换标签页
-        bind "Ctrl 1" { GoToTab 1; SwitchToMode "normal"; }
-        bind "Ctrl 2" { GoToTab 2; SwitchToMode "normal"; }
-        bind "Ctrl 3" { GoToTab 3; SwitchToMode "normal"; }
-        bind "Ctrl 4" { GoToTab 4; SwitchToMode "normal"; }
-        bind "Ctrl 5" { GoToTab 5; SwitchToMode "normal"; }
-        bind "Ctrl 6" { GoToTab 6; SwitchToMode "normal"; }
-        bind "Ctrl 7" { GoToTab 7; SwitchToMode "normal"; }
-        bind "Ctrl 8" { GoToTab 8; SwitchToMode "normal"; }
-        bind "Ctrl 9" { GoToTab 9; SwitchToMode "normal"; }
-        
-        // START: Added by Assistant (New request)
-        // 使用 Ctrl+` 切换浮动窗口的显示/隐藏
-        bind "Ctrl `" { ToggleFloatingPanes; SwitchToMode "normal"; }
-        // END: Added by Assistant
+        // 使用 Alt+` 切换浮动窗口的显示/隐藏
+        bind "Alt `" { ToggleFloatingPanes; SwitchToMode "normal"; }
+        // END: Modified by Assistant
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
