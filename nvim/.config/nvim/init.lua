@@ -206,9 +206,6 @@ vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
 -- =========== 修改后的快捷键 =============
--- 保存文件
-vim.keymap.set("n", "<leader><leader>", "<cmd>w<cr>", { desc = "保存文件" })
-
 -- Telescope
 vim.keymap.set("n", "<leader>2", function()
     require("telescope.builtin").find_files({ hidden = true })
