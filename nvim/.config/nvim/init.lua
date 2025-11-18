@@ -230,5 +230,8 @@ vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
+-- [[ 新增快捷键 ]]
+vim.keymap.set("n", "<leader>d", "daw", { desc = "删除一个单词 (daw)" })
+-- =================
 
 vim.cmd("colorscheme tokyonight")
