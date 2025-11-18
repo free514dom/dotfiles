@@ -111,6 +111,10 @@ require("lazy").setup({
             "mfussenegger/nvim-jdtls",
         },
         config = function()
+            -- ===== 加在这里 =====
+            vim.g.java_runner = vim.g.java_runner or {}
+            vim.g.java_runner.spring_boot_tools_version = "1.59.0" -- 固定版本，不再自动升级
+            -- =====================
             require("java").setup()
         end,
     },
