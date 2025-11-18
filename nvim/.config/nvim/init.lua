@@ -76,7 +76,7 @@ require("lazy").setup({
             require("gitsigns").setup()
         end,
     },
-    { "kdheepak/lazygit.nvim", cmd = "LazyGit" },
+    { "kdheepak/lazygit.nvim",  cmd = "LazyGit" },
     {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
@@ -89,7 +89,7 @@ require("lazy").setup({
 
     { "tpope/vim-repeat" },
 
-    { "pocco81/auto-save.nvim",  event = "VeryLazy", opts = {} }, -- 添加了自动保存插件
+    { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} }, -- 添加了自动保存插件
 
     {
         "ggandor/leap.nvim",
@@ -231,7 +231,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
 -- [[ 新增快捷键 ]]
-vim.keymap.set("n", "<leader>d", "daw", { desc = "删除一个单词 (daw)" })
+-- 将删除单词的功能从 <leader>d 移到了更方便的 Q 键上
+vim.keymap.set("n", "Q", "daw", { desc = "删除一个单词 (daw)" })
 -- =================
 
 vim.cmd("colorscheme tokyonight")
