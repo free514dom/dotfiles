@@ -28,9 +28,10 @@ require("lazy").setup({
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
-                    "lua", "vim", "vimdoc", "query", "rust", "python",
+                    "lua", "vim", "vimdoc", "query",
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
-                    "java", -- 新增 java 高亮
+                    "java", -- 保留 Java 高亮
+                    -- 已删除: rust, python
                 },
                 sync_install = false,
                 auto_install = true,
@@ -96,12 +97,12 @@ require("lazy").setup({
             require("nvim-autopairs").setup({})
         end,
     },
-    -- ==================== Java 支持开始 ====================
+
+    -- ==================== Java 支持 ====================
     {
         "mfussenegger/nvim-jdtls",
         ft = { "java" },
     },
-    -- 可选但强烈推荐的 Java 增强套装（自动配置 lombok、测试、debug 等）
     {
         "nvim-java/nvim-java",
         dependencies = {
@@ -117,6 +118,7 @@ require("lazy").setup({
         end,
     },
     -- ==================== Java 支持结束 ====================
+
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
@@ -157,26 +159,23 @@ require("lazy").setup({
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
                 ensure_installed = {
-                    "rust_analyzer",
+                    -- 已移除: rust_analyzer, pyright
                     "jsonls",
                     "bashls",
                     "yamlls",
                     "taplo",
                     "lua_ls",
-                    "pyright",
-                    "jdtls", -- Java LSP
+                    "jdtls", -- Java LSP 保留
                 },
                 handlers = {
                     lsp_zero.default_setup,
-                    -- jdtls 需要特殊处理，不能走默认流程
-                    jdtls = function() end,
+                    jdtls = function() end, -- jdtls 仍需跳过默认 handler
                 },
             })
 
             local cmp = require("cmp")
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
             cmp.setup({
                 sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
                 snippet = {
