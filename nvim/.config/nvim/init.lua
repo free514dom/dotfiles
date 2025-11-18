@@ -1,5 +1,4 @@
 -- nvim/.config/nvim/init.lua
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -12,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+
 require("lazy").setup({
     {
         "folke/tokyonight.nvim",
@@ -22,25 +22,15 @@ require("lazy").setup({
             end,
         },
     },
-
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                    "query",
-                    "rust",
-                    "python",
-                    "json",
-                    "bash",
-                    "yaml",
-                    "toml",
-                    "markdown",
-                    "markdown_inline",
+                    "lua", "vim", "vimdoc", "query", "rust", "python",
+                    "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
+                    "java", -- 新增 java 高亮
                 },
                 sync_install = false,
                 auto_install = true,
@@ -48,14 +38,12 @@ require("lazy").setup({
             })
         end,
     },
-
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("telescope").setup({
                 defaults = {
-                    -- 这样即使使用 find 命令, 也会忽略 .git 目录
                     file_ignore_patterns = { "%.git/" },
                 },
             })
@@ -86,36 +74,49 @@ require("lazy").setup({
             format_on_save = { timeout_ms = 1500, lsp_fallback = true },
         },
     },
-
     { "tpope/vim-repeat" },
-
-    { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} }, -- 添加了自动保存插件
-
+    { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} },
     {
         "ggandor/leap.nvim",
         event = "VeryLazy",
         dependencies = { "tpope/vim-repeat" },
         config = function()
             local leap = require("leap")
-
             leap.opts.preview = function(ch0, ch1, ch2)
                 return not (ch1:match("%s") or (ch0:match("%a") and ch1:match("%a") and ch2:match("%a")))
             end
-
             vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap: 瞬移到2字符" })
             vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Leap: 跨窗口瞬移" })
         end,
     },
-    -- --- ### 新增: 自动配对插件 ### ---
     {
         "windwp/nvim-autopairs",
-        event = "InsertEnter", -- 只在进入插入模式时加载
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({})
-            -- 下面的集成代码移动到了 lsp-zero 的 cmp 配置块中, 以确保加载顺序正确
         end,
     },
-    -- --- ### 新增结束 ### ---
+    -- ==================== Java 支持开始 ====================
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    },
+    -- 可选但强烈推荐的 Java 增强套装（自动配置 lombok、测试、debug 等）
+    {
+        "nvim-java/nvim-java",
+        dependencies = {
+            "nvim-java/lua-async-await",
+            "nvim-java/nvim-java-refactor",
+            "nvim-java/nvim-java-core",
+            "nvim-java/nvim-java-test",
+            "nvim-java/nvim-java-dap",
+            "mfussenegger/nvim-jdtls",
+        },
+        config = function()
+            require("java").setup()
+        end,
+    },
+    -- ==================== Java 支持结束 ====================
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
@@ -129,7 +130,6 @@ require("lazy").setup({
             { "hrsh7th/cmp-path" },
             { "saadparwaiz1/cmp_luasnip" },
             { "L3MON4D3/LuaSnip" },
-            -- 明确将 nvim-autopairs 作为依赖, 虽然不是严格必须, 但逻辑上更清晰
             { "windwp/nvim-autopairs" },
         },
         config = function()
@@ -148,15 +148,12 @@ require("lazy").setup({
                 map("n", "K", vim.lsp.buf.hover, "显示悬浮文档")
                 map("n", "gi", vim.lsp.buf.implementation, "跳转到实现")
                 map("n", "gr", vim.lsp.buf.references, "查找引用")
-                -- *** 修改过的LSP快捷键 ***
-                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作") -- (保持不变)
-                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号") -- (保持不变)
-                map({ "n", "v" }, "<leader>8", vim.diagnostic.open_float, "显示诊断信息") -- (从 leader+5 移动到 leader+8)
-                -- ***********************
+                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作")
+                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号")
+                map({ "n", "v" }, "<leader>8", vim.diagnostic.open_float, "显示诊断信息")
             end)
 
             require("mason").setup({})
-
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
                 ensure_installed = {
@@ -167,18 +164,19 @@ require("lazy").setup({
                     "taplo",
                     "lua_ls",
                     "pyright",
+                    "jdtls", -- Java LSP
                 },
                 handlers = {
                     lsp_zero.default_setup,
+                    -- jdtls 需要特殊处理，不能走默认流程
+                    jdtls = function() end,
                 },
             })
 
             local cmp = require("cmp")
-            -- --- ### 新增: nvim-autopairs 与 nvim-cmp 集成 ### ---
-            -- 当你通过回车确认补全时, 此设置可以防止 autopairs 插件错误地插入一个换行符
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-            -- --- ### 新增结束 ### ---
+
             cmp.setup({
                 sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
                 snippet = {
@@ -194,6 +192,8 @@ require("lazy").setup({
         end,
     },
 })
+
+-- ==================== 基础选项 ====================
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
@@ -201,60 +201,43 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-
 vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.showbreak = "↪ "
-
 vim.opt.mouse = "a"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.undofile = true
 vim.o.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- ==================== 基础快捷键 ====================
 vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Move down by visual line" })
 vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Move up by visual line" })
-
 vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- =========== 修改后的快捷键 =============
 -- Telescope
-vim.keymap.set("n", "<leader>2", function()
-    require("telescope.builtin").find_files({ hidden = true })
-end, { desc = "查找文件 (含隐藏)" })
+vim.keymap.set("n", "<leader>2", function() require("telescope.builtin").find_files({ hidden = true }) end,
+    { desc = "查找文件 (含隐藏)" })
 vim.keymap.set("n", "<leader>3", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
 vim.keymap.set("n", "<leader>4", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索" })
 vim.keymap.set("n", "<leader>5", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档" })
 
--- 其他顺移的快捷键
-vim.keymap.set({ "n", "v" }, "<leader>9", function()
-    require("conform").format({ async = true, lsp_fallback = true })
-end, { desc = "格式化文件" })
-vim.keymap.set("n", "<leader>0", function()
-    vim.opt.wrap = not vim.opt.wrap:get()
-end, { desc = "切换自动换行" })
--- =====================================
-
--- 未发生冲突，保持不变的快捷键
+-- 其他
+vim.keymap.set({ "n", "v" }, "<leader>9", function() require("conform").format({ async = true, lsp_fallback = true }) end,
+    { desc = "格式化文件" })
+vim.keymap.set("n", "<leader>0", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行" })
 vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
--- --- ### 修改部分开始 ### ---
--- [[ 新增/修改快捷键 ]]
--- 将 Shift+M 映射为删除一个单词
+-- 你自定义的 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
-
--- 将 Shift+Q (即 Q) 映射为修改一个单词
 vim.keymap.set("n", "Q", "ciw", { desc = "修改一个单词 (ciw)" })
--- =================
--- --- ### 修改部分结束 ### ---
 
 vim.cmd("colorscheme tokyonight")
