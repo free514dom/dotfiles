@@ -60,8 +60,8 @@ output * bg /usr/share/backgrounds/default.jxl fill
 # 输入设备
 input "..." { ... }
 input type:keyboard {
-    repeat_delay 250
-    repeat_rate 34
+    repeat_delay 220
+    repeat_rate 45
 }
 # 按键绑定
 # 基础绑定
