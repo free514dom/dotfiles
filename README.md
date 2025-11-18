@@ -43,6 +43,7 @@
 - [隐藏YouTube分散注意力的元素](https://addons.mozilla.org/firefox/addon/youtube-recommended-videos)
 - [流畅翻译](https://addons.mozilla.org/firefox/addon/%E6%B5%81%E7%95%85%E9%98%85%E8%AF%BB)
 - [全站暗色模式](https://addons.mozilla.org/firefox/addon/darkreader)
+- [重定向新建标签页](https://addons.mozilla.org/firefox/addon/new-tab-override)
 - [网站ai代理](https://github.com/browser-use/browser-use)
 - [ollama](https://github.com/ollama/ollama)
 - [openwrt](https://github.com/openwrt)
