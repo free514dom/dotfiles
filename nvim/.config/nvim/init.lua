@@ -11,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.lsp._deprecated_lspconfig = true -- 压制 nvim-java 的 lspconfig deprecation 警告
 vim.g.mason_binaries_unzip = "7z x"
 require("lazy").setup({
     {
