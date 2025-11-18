@@ -230,9 +230,14 @@ vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
--- [[ 新增快捷键 ]]
--- 将删除单词的功能从 <leader>d 移到了更方便的 Q 键上
-vim.keymap.set("n", "Q", "daw", { desc = "删除一个单词 (daw)" })
+-- --- ### 修改部分开始 ### ---
+-- [[ 新增/修改快捷键 ]]
+-- 将 Shift+M 映射为删除一个单词
+vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
+
+-- 将 Shift+Q (即 Q) 映射为修改一个单词
+vim.keymap.set("n", "Q", "ciw", { desc = "修改一个单词 (ciw)" })
 -- =================
+-- --- ### 修改部分结束 ### ---
 
 vim.cmd("colorscheme tokyonight")
