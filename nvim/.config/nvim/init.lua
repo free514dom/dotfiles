@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
-
+vim.g.mason_binaries_unzip = "7z x"
 require("lazy").setup({
     {
         "folke/tokyonight.nvim",
