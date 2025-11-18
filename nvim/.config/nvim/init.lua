@@ -106,6 +106,16 @@ require("lazy").setup({
             vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Leap: 跨窗口瞬移" })
         end,
     },
+    -- --- ### 新增: 自动配对插件 ### ---
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter", -- 只在进入插入模式时加载
+        config = function()
+            require("nvim-autopairs").setup({})
+            -- 下面的集成代码移动到了 lsp-zero 的 cmp 配置块中, 以确保加载顺序正确
+        end,
+    },
+    -- --- ### 新增结束 ### ---
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
@@ -119,6 +129,8 @@ require("lazy").setup({
             { "hrsh7th/cmp-path" },
             { "saadparwaiz1/cmp_luasnip" },
             { "L3MON4D3/LuaSnip" },
+            -- 明确将 nvim-autopairs 作为依赖, 虽然不是严格必须, 但逻辑上更清晰
+            { "windwp/nvim-autopairs" },
         },
         config = function()
             local lsp_zero = require("lsp-zero")
@@ -162,6 +174,11 @@ require("lazy").setup({
             })
 
             local cmp = require("cmp")
+            -- --- ### 新增: nvim-autopairs 与 nvim-cmp 集成 ### ---
+            -- 当你通过回车确认补全时, 此设置可以防止 autopairs 插件错误地插入一个换行符
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+            -- --- ### 新增结束 ### ---
             cmp.setup({
                 sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
                 snippet = {
