@@ -97,12 +97,8 @@ require("lazy").setup({
             require("nvim-autopairs").setup({})
         end,
     },
-
     -- ==================== Java 支持 ====================
-    {
-        "mfussenegger/nvim-jdtls",
-        ft = { "java" },
-    },
+    -- 删掉了单独的 nvim-jdtls（nvim-java 已包含）
     {
         "nvim-java/nvim-java",
         dependencies = {
@@ -118,7 +114,6 @@ require("lazy").setup({
         end,
     },
     -- ==================== Java 支持结束 ====================
-
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
@@ -154,7 +149,6 @@ require("lazy").setup({
                 map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号")
                 map({ "n", "v" }, "<leader>8", vim.diagnostic.open_float, "显示诊断信息")
             end)
-
             require("mason").setup({})
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
@@ -165,14 +159,14 @@ require("lazy").setup({
                     "yamlls",
                     "taplo",
                     "lua_ls",
-                    "jdtls", -- Java LSP 保留
+                    -- "jdtls" 这行彻底删掉 + 下面的 exclude 一起保险
                 },
+                automatic_installation = { exclude = { "jdtls" } }, -- 关键一行，防止 mason 偷偷装 jdtls
                 handlers = {
                     lsp_zero.default_setup,
-                    jdtls = function() end, -- jdtls 仍需跳过默认 handler
+                    jdtls = function() end, -- 保留你原来的空 handler，双保险
                 },
             })
-
             local cmp = require("cmp")
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -191,7 +185,6 @@ require("lazy").setup({
         end,
     },
 })
-
 -- ==================== 基础选项 ====================
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -211,7 +204,6 @@ vim.o.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
 -- ==================== 基础快捷键 ====================
 vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Move down by visual line" })
 vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Move up by visual line" })
@@ -219,14 +211,12 @@ vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
-
 -- Telescope
 vim.keymap.set("n", "<leader>2", function() require("telescope.builtin").find_files({ hidden = true }) end,
     { desc = "查找文件 (含隐藏)" })
 vim.keymap.set("n", "<leader>3", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
 vim.keymap.set("n", "<leader>4", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索" })
 vim.keymap.set("n", "<leader>5", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档" })
-
 -- 其他
 vim.keymap.set({ "n", "v" }, "<leader>9", function() require("conform").format({ async = true, lsp_fallback = true }) end,
     { desc = "格式化文件" })
@@ -234,9 +224,7 @@ vim.keymap.set("n", "<leader>0", function() vim.opt.wrap = not vim.opt.wrap:get(
 vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
-
 -- 你自定义的 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
 vim.keymap.set("n", "Q", "ciw", { desc = "修改一个单词 (ciw)" })
-
 vim.cmd("colorscheme tokyonight")
