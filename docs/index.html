@@ -133,6 +133,20 @@
 <a href="https://freecodecamp.org">FreeCodeCamp</a>
 <a href="https://minecraft.wiki">MinecraftWiki</a>
 
+<div class="todo">
+
+  <div class="running">
+    <div>Write core business logic</div>
+    <div>Test the line break effect of long text to ensure that when this sentence is long, the second line of text is perfectly aligned and does not fall below the arrow.</div>
+    <div>qwqWrite core business logic</div>
+  </div>
+
+  <div class="waiting">
+    <div>Update project dependencies</div>
+    <div>Organize requirements documents</div>
+  </div>
+
+</div>
 
 <style>
     a {
@@ -152,8 +166,6 @@
  /* 基础设置: 等宽字体, 适应宽屏 */
   .todo { font: 16px/1.6 monospace; padding: 30px; }
   
-  /* 核心排版: 所有的 item (div下的div) 统一做悬挂缩进 */
-  .todo div div { padding-left: 4ch; text-indent: -4ch; margin-bottom: 5px; }
 
   /* --- Running 部分 --- */
   .running { color: #000; font-weight: bold; }
@@ -165,17 +177,5 @@
   .waiting::before { content: "WAITING"; display: block; border-bottom: 1px solid; margin-bottom: 15px; opacity: 0.5; }
   .waiting div::before { content: "~] "; }
 </style>
-<div class="todo">
 
-  <div class="running">
-    <div>Write core business logic</div>
-    <div>Test the line break effect of long text to ensure that when this sentence is long, the second line of text is perfectly aligned and does not fall below the arrow.</div>
-    <div>qwqWrite core business logic</div>
-  </div>
 
-  <div class="waiting">
-    <div>Update project dependencies</div>
-    <div>Organize requirements documents</div>
-  </div>
-
-</div>
