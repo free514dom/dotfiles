@@ -148,32 +148,33 @@
         background-color: #444;
         color: #fff;
     }
-  /* t:整体容器 | r:Running | w:Waiting */
-  .t { font: 16px/1.6 monospace; padding: 20px; }
+
+ /* 基础设置: 等宽字体, 适应宽屏 */
+  .todo { font: 16px/1.6 monospace; padding: 30px; }
   
-  /* 核心排版: 悬挂缩进, 保证长文本对齐 */
-  .t div div { padding-left: 2em; text-indent: -2em; }
+  /* 核心排版: 所有的 item (div下的div) 统一做悬挂缩进 */
+  .todo div div { padding-left: 4ch; text-indent: -4ch; margin-bottom: 5px; }
 
-  /* Running 样式 */
-  .r { color: #000; font-weight: bold; margin-bottom: 30px; }
-  .r::before { content: "RUNNING_"; display: block; margin-bottom: 10px; }
-  .r div::before { content: ">> "; }
+  /* --- Running 部分 --- */
+  .running { color: #000; font-weight: bold; }
+  .running::before { content: "RUNNING"; display: block; border-bottom: 2px solid; margin-bottom: 15px; }
+  .running div::before { content: "->  "; }
 
-  /* Waiting 样式 */
-  .w { color: #888; }
-  .w::before { content: "WAITING_"; display: block; margin-bottom: 10px; }
-  .w div::before { content: "// "; }
+  /* --- Waiting 部分 --- */
+  .waiting { color: #888; margin-top: 40px; }
+  .waiting::before { content: "WAITING"; display: block; border-bottom: 1px solid; margin-bottom: 15px; opacity: 0.5; }
+  .waiting div::before { content: "[ ] "; }
 </style>
-<div class="t">
+<div class="todo">
 
-  <div class="r">
-    <div>修复线上紧急 Bug</div>
-    <div>编写长文本测试，即便这行字很长很长换行了，前面的箭头也不会跟文字重叠，保持绝对的整洁</div>
+  <div class="running">
+    <div>编写核心业务逻辑</div>
+    <div>测试长文本换行效果，确保这一句很长的话在换行时，第二行文字能完美对齐，不会跑到箭头的下面去</div>
   </div>
 
-  <div class="w">
-    <div>重构数据库</div>
-    <div>学习 Rust</div>
+  <div class="waiting">
+    <div>更新项目依赖库</div>
+    <div>整理需求文档</div>
   </div>
 
 </div>
