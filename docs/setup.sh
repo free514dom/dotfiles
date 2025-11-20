@@ -1,6 +1,5 @@
-# Fedora
+#!/bin/bash
 
-```bash
 # update && upgrade
 sudo dnf -y update && sudo dnf -y upgrade
 
@@ -173,4 +172,3 @@ sudo npm install -g repomix
 
 # fish
 sudo dnf -y install fish && chsh -s /usr/bin/fish
-```
