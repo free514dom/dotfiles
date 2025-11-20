@@ -148,45 +148,64 @@
         background-color: #444;
         color: #fff;
     }
-  .todo { 
+  
+  .board { 
     font-family: Consolas, "Courier New", monospace; 
-    font-size: 16px; 
-    line-height: 1.8;       /* 增加行高，长文不拥挤 */
-    color: #333; 
-    margin: 40px;           /* 四周留白，中间自适应 */
+    margin: 40px; 
+    line-height: 1.6;
   }
+  
+  /* 通用区块样式 */
+  .section { margin-bottom: 50px; }
+  .section h3 { 
+    border-bottom: 2px solid; 
+    padding-bottom: 5px; 
+    margin-bottom: 15px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+  }
+  
+  /* 列表项通用样式：悬挂缩进 */
+  .section > div { 
+    padding: 6px 0; 
+    padding-left: 2em; 
+    text-indent: -2em; 
+    border-bottom: 1px dashed #f0f0f0;
+  }
+  
+  /* --- Running 区域样式 (高亮/强调) --- */
+  .run { color: #222; }
+  .run h3 { border-color: #000; }
+  .run > div::before { content: "▶ "; font-weight: bold; }
+  .run > div { font-weight: 500; }
 
-  .todo > div { 
-    padding: 8px 0; 
-    border-bottom: 1px dashed #eee; 
+  /* --- Waiting 区域样式 (低调/灰色) --- */
+  .wait { color: #888; }
+  .wait h3 { border-color: #ddd; color: #aaa; }
+  .wait > div::before { content: "⏸ "; opacity: 0.6; }
+  
+  /* 鼠标悬停辅助 */
+  .section > div:hover { background: #fcfcfc; color: #000; }
+</style>
+<div class="board">
+
+  <!-- 正在进行 (Running) -->
+  <div class="section run">
+    <h3>Running</h3>
     
-    /* 核心：悬挂缩进技巧 */
-    padding-left: 2.5em;    /* 给左边留出放 [ ] 的空间 */
-    text-indent: -2.5em;    /* 第一行向左拉回，把 [ ] 放进去 */
-  }
+    <div>修复登录页面的 CSS 样式错乱问题</div>
+    <div>编写 API 接口文档（这就属于一句很长的话，用来测试宽屏显示和悬挂缩进是否正常工作，确保换行后文字对齐，而不是跑到箭头的下面）</div>
 
-  /* 自动生成复选框样式 */
-  .todo > div::before { 
-    content: "[ ] "; 
-    color: #999; 
-    font-weight: bold;
-    margin-right: 0.5em;    /* 稍微隔开一点距离 */
-  }
+  </div>
 
-  /* 完成状态 */
-  .todo > .x { color: #bbb; text-decoration: line-through; }
-  .todo > .x::before { content: "[x] "; color: #bbb; }
-  
-  /* 鼠标划过高亮 */
-  .todo > div:hover { background-color: #fcfcfc; }
-</style></style>
-<div class="todo">
-  
-  <!-- 在下方编辑你的列表 -->
-  
-  <div class="x">init repo</div>
-  <div class="x">creat index.html</div>
-  <div>logic</div>
-  <div>commit to  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000GitHub</div>
+  <!-- 稍后/等待 (Waiting) -->
+  <div class="section wait">
+    <h3>Waiting</h3>
+    
+    <div>调研一下新的前端框架</div>
+    <div>重构数据库结构</div>
+    <div>整理上周的会议纪要</div>
+
+  </div>
 
 </div>
