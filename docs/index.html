@@ -148,64 +148,32 @@
         background-color: #444;
         color: #fff;
     }
+  /* t:整体容器 | r:Running | w:Waiting */
+  .t { font: 16px/1.6 monospace; padding: 20px; }
   
-  .board { 
-    font-family: Consolas, "Courier New", monospace; 
-    margin: 40px; 
-    line-height: 1.6;
-  }
-  
-  /* 通用区块样式 */
-  .section { margin-bottom: 50px; }
-  .section h3 { 
-    border-bottom: 2px solid; 
-    padding-bottom: 5px; 
-    margin-bottom: 15px; 
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-  }
-  
-  /* 列表项通用样式：悬挂缩进 */
-  .section > div { 
-    padding: 6px 0; 
-    padding-left: 2em; 
-    text-indent: -2em; 
-    border-bottom: 1px dashed #f0f0f0;
-  }
-  
-  /* --- Running 区域样式 (高亮/强调) --- */
-  .run { color: #222; }
-  .run h3 { border-color: #000; }
-  .run > div::before { content: "▶ "; font-weight: bold; }
-  .run > div { font-weight: 500; }
+  /* 核心排版: 悬挂缩进, 保证长文本对齐 */
+  .t div div { padding-left: 2em; text-indent: -2em; }
 
-  /* --- Waiting 区域样式 (低调/灰色) --- */
-  .wait { color: #888; }
-  .wait h3 { border-color: #ddd; color: #aaa; }
-  .wait > div::before { content: "⏸ "; opacity: 0.6; }
-  
-  /* 鼠标悬停辅助 */
-  .section > div:hover { background: #fcfcfc; color: #000; }
+  /* Running 样式 */
+  .r { color: #000; font-weight: bold; margin-bottom: 30px; }
+  .r::before { content: "RUNNING_"; display: block; margin-bottom: 10px; }
+  .r div::before { content: ">> "; }
+
+  /* Waiting 样式 */
+  .w { color: #888; }
+  .w::before { content: "WAITING_"; display: block; margin-bottom: 10px; }
+  .w div::before { content: "// "; }
 </style>
-<div class="board">
+<div class="t">
 
-  <!-- 正在进行 (Running) -->
-  <div class="section run">
-    <h3>Running</h3>
-    
-    <div>修复登录页面的 CSS 样式错乱问题</div>
-    <div>编写 API 接口文档（这就属于一句很长的话，用来测试宽屏显示和悬挂缩进是否正常工作，确保换行后文字对齐，而不是跑到箭头的下面）</div>
-
+  <div class="r">
+    <div>修复线上紧急 Bug</div>
+    <div>编写长文本测试，即便这行字很长很长换行了，前面的箭头也不会跟文字重叠，保持绝对的整洁</div>
   </div>
 
-  <!-- 稍后/等待 (Waiting) -->
-  <div class="section wait">
-    <h3>Waiting</h3>
-    
-    <div>调研一下新的前端框架</div>
-    <div>重构数据库结构</div>
-    <div>整理上周的会议纪要</div>
-
+  <div class="w">
+    <div>重构数据库</div>
+    <div>学习 Rust</div>
   </div>
 
 </div>
