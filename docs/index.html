@@ -148,4 +148,45 @@
         background-color: #444;
         color: #fff;
     }
-</style>
+  .todo { 
+    font-family: Consolas, "Courier New", monospace; 
+    font-size: 16px; 
+    line-height: 1.8;       /* 增加行高，长文不拥挤 */
+    color: #333; 
+    margin: 40px;           /* 四周留白，中间自适应 */
+  }
+
+  .todo > div { 
+    padding: 8px 0; 
+    border-bottom: 1px dashed #eee; 
+    
+    /* 核心：悬挂缩进技巧 */
+    padding-left: 2.5em;    /* 给左边留出放 [ ] 的空间 */
+    text-indent: -2.5em;    /* 第一行向左拉回，把 [ ] 放进去 */
+  }
+
+  /* 自动生成复选框样式 */
+  .todo > div::before { 
+    content: "[ ] "; 
+    color: #999; 
+    font-weight: bold;
+    margin-right: 0.5em;    /* 稍微隔开一点距离 */
+  }
+
+  /* 完成状态 */
+  .todo > .x { color: #bbb; text-decoration: line-through; }
+  .todo > .x::before { content: "[x] "; color: #bbb; }
+  
+  /* 鼠标划过高亮 */
+  .todo > div:hover { background-color: #fcfcfc; }
+</style></style>
+<div class="todo">
+  
+  <!-- 在下方编辑你的列表 -->
+  
+  <div class="x">init repo</div>
+  <div class="x">creat index.html</div>
+  <div>logic</div>
+  <div>commit to  0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000GitHub</div>
+
+</div>
