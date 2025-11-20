@@ -3,7 +3,6 @@
 ### Running
 
 - [润]
-- [毕设]
 
 ### Waiting
 
