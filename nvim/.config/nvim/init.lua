@@ -55,7 +55,7 @@ require("lazy").setup({
             require("gitsigns").setup()
         end,
     },
-    { "kdheepak/lazygit.nvim",  cmd = "LazyGit" },
+    -- 已删除 kdheepak/lazygit.nvim
     {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
@@ -196,7 +196,7 @@ vim.keymap.set("n", "<leader>5", "<cmd>lua require('telescope.builtin').help_tag
 vim.keymap.set({ "n", "v" }, "<leader>9", function() require("conform").format({ async = true, lsp_fallback = true }) end,
     { desc = "格式化文件" })
 vim.keymap.set("n", "<leader>0", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行" })
-vim.keymap.set("n", "<leader>1", "<cmd>LazyGit<cr>", { desc = "打开 Lazygit" })
+-- 已删除 Lazygit 快捷键 <leader>1
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
