@@ -5,7 +5,7 @@ matches:
 
   - trigger: "`sbp"
     replace: |-
-      给傻子的spring boot教程(不讲原理直接开始做)---------------System instructions我就用类似记事本的东西,OS有可能是fedora
+      给傻子的spring boot教程,不讲原理直接开始做(我就用类似记事本的东西,OS有可能是fedora,我也太确定是什么OS)
 
   - trigger: "`leetcode"
     replace: |-
