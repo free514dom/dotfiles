@@ -266,8 +266,10 @@ vim.keymap.set({ "n", "v" }, "<leader>9", function() require("conform").format({
     { desc = "格式化文件" })
 vim.keymap.set("n", "<leader>0", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行" })
 -- 已删除 Lazygit 快捷键 <leader>1
+
+-- [修改] 修复了此处原先错误的 "]"，改为 "]d" 以匹配 "[d" 并防止按键冲突
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
-vim.keymap.set("n", "]", vim.diagnostic.goto_next, { desc = "下一个诊断" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
 -- 你自定义的 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
