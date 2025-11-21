@@ -37,7 +37,7 @@ require("lazy").setup({
                 sync_install = false,
                 auto_install = true,
                 highlight = { enable = true },
-                -- [新增] 文本对象配置
+                -- [新增]文本对象配置
                 textobjects = {
                     select = {
                         enable = true,
