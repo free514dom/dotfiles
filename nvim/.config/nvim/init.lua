@@ -87,6 +87,21 @@ require("lazy").setup({
             require("nvim-autopairs").setup({})
         end,
     },
+    -- [新增] nvim-surround: 快速增删改成对符号 (ys, ds, cs)
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({})
+        end,
+    },
+    -- [新增] indent-blankline: 显示缩进线
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+    },
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
