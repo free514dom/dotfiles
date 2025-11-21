@@ -48,15 +48,7 @@ require("lazy").setup({
             })
         end,
     },
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-        end,
-        opts = {},
-    },
+    -- 已删除 folke/which-key.nvim 相关的代码块
     {
         "lewis6991/gitsigns.nvim",
         config = function()
