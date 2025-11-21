@@ -64,7 +64,18 @@ require("lazy").setup({
             })
         end,
     },
-    -- 已删除 folke/which-key.nvim 相关的代码块
+    -- [新增] Which Key 插件
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300 -- 设置按键等待时间，必须设置否则弹出很慢
+        end,
+        opts = {
+            -- 这里可以添加自定义配置，留空使用默认值
+        },
+    },
     {
         "lewis6991/gitsigns.nvim",
         -- [修改] 改用 opts 配置并添加快捷键
