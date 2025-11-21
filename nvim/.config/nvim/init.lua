@@ -88,19 +88,19 @@ require("lazy").setup({
                     if vim.wo.diff then return "]c" end
                     vim.schedule(function() gs.next_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "下一处修改" })
+                end, { expr = true, desc = "Git: Next Hunk" }) -- 英文更短，对齐更好
 
                 map("n", "[c", function()
                     if vim.wo.diff then return "[c" end
                     vim.schedule(function() gs.prev_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "上一处修改" })
+                end, { expr = true, desc = "Git: Prev Hunk" })
 
                 -- [修改] Git 操作单字符映射
-                map("n", "<leader>p", gs.preview_hunk, { desc = "Git: 预览修改块 (Preview)" })
+                map("n", "<leader>p", gs.preview_hunk, { desc = "Git: Preview Hunk" })
                 
-                -- [已修改] <leader>B -> <leader>l (Line)
-                map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: 显示行 Blame (Line)" })
+                -- [已修改] <leader>B -> <leader>l (Line blame)
+                map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
             end,
         },
     },
@@ -124,8 +124,8 @@ require("lazy").setup({
             leap.opts.preview = function(ch0, ch1, ch2)
                 return not (ch1:match("%s") or (ch0:match("%a") and ch1:match("%a") and ch2:match("%a")))
             end
-            vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap: 瞬移到2字符" })
-            vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Leap: 跨窗口瞬移" })
+            vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)", { desc = "Motion: Leap forward" })
+            vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Motion: Leap windows" })
         end,
     },
     {
@@ -171,20 +171,20 @@ require("lazy").setup({
                         mode,
                         lhs,
                         rhs,
-                        { buffer = bufnr, noremap = true, silent = true, desc = "LSP: " .. desc }
+                        { buffer = bufnr, noremap = true, silent = true, desc = desc }
                     )
                 end
-                -- [保持] 基础 LSP 导航
-                map("n", "gd", vim.lsp.buf.definition, "跳转到定义")
-                map("n", "gD", vim.lsp.buf.declaration, "跳转到声明")
-                map("n", "K", vim.lsp.buf.hover, "显示悬浮文档")
-                map("n", "gi", vim.lsp.buf.implementation, "跳转到实现")
-                map("n", "gr", vim.lsp.buf.references, "查找引用")
+                -- [保持] 基础 LSP 导航 (去掉 "LSP:" 前缀，因为这些不通过 leader 触发)
+                map("n", "gd", vim.lsp.buf.definition, "Goto Definition")
+                map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
+                map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+                map("n", "gi", vim.lsp.buf.implementation, "Goto Implementation")
+                map("n", "gr", vim.lsp.buf.references, "Goto References")
 
-                -- [修改] 使用单字符助记符
-                map("n", "<leader>a", vim.lsp.buf.code_action, "代码操作 (Action)")
-                map("n", "<leader>r", vim.lsp.buf.rename, "重命名符号 (Rename)")
-                map({ "n", "v" }, "<leader>e", vim.diagnostic.open_float, "显示诊断信息 (Error)")
+                -- [修改] Leader 触发的 LSP 功能，加上前缀
+                map("n", "<leader>a", vim.lsp.buf.code_action, "LSP: Code Action")
+                map("n", "<leader>r", vim.lsp.buf.rename, "LSP: Rename Symbol")
+                map({ "n", "v" }, "<leader>e", vim.diagnostic.open_float, "LSP: Show Diagnostics")
             end)
 
             require("mason").setup({})
@@ -242,33 +242,33 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- ==================== 基础快捷键 ====================
-vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Move down by visual line" })
-vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Move up by visual line" })
+vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Motion: Move down visual" })
+vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Motion: Move up visual" })
 vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- [修改] Telescope 单字符映射
+-- [修改] Telescope 搜索类，统一使用 "Find:" 前缀
 vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end,
-    { desc = "查找文件 (Files)" })
-vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区 (Buffers)" })
-vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索 (Grep)" })
-vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档 (Help)" })
+    { desc = "Find: Files" })
+vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Find: Buffers" })
+vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find: Text (Grep)" })
+vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Find: Help" })
 
 -- [修改] 功能性单字符映射
 -- [已修改] <leader>F -> <leader>m (Make/Modify)
 vim.keymap.set({ "n", "v" }, "<leader>m", function() require("conform").format({ async = true, lsp_fallback = true }) end,
-    { desc = "格式化文件 (Format)" })
+    { desc = "Code: Format File" })
 
-vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行 (Wrap)" })
+vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "UI: Toggle Wrap" })
 
 -- 诊断跳转
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic: Prev" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic: Next" })
 
 -- 自定义 M/Q
-vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
-vim.keymap.set("n", "Q", "ciw", { desc = "修改一个单词 (ciw)" })
+vim.keymap.set("n", "M", "daw", { desc = "Edit: Delete Word" })
+vim.keymap.set("n", "Q", "ciw", { desc = "Edit: Change Word" })
 
 vim.cmd("colorscheme tokyonight")
