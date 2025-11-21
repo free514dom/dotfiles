@@ -108,7 +108,8 @@ require("lazy").setup({
         cmd = { "ConformInfo" },
         opts = {
             formatters_by_ft = { lua = { "stylua" }, markdown = { "prettier" } },
-            format_on_save = nil,         },
+            format_on_save = nil,
+        },
     },
     { "tpope/vim-repeat" },
     { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} },
