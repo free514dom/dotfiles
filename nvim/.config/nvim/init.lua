@@ -98,7 +98,9 @@ require("lazy").setup({
 
                 -- [修改] Git 操作单字符映射
                 map("n", "<leader>p", gs.preview_hunk, { desc = "Git: 预览修改块 (Preview)" })
-                map("n", "<leader>B", function() gs.blame_line({ full = true }) end, { desc = "Git: 显示行 Blame" })
+                
+                -- [已修改] <leader>B -> <leader>l (Line)
+                map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: 显示行 Blame (Line)" })
             end,
         },
     },
@@ -255,8 +257,10 @@ vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_gre
 vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档 (Help)" })
 
 -- [修改] 功能性单字符映射
-vim.keymap.set({ "n", "v" }, "<leader>F", function() require("conform").format({ async = true, lsp_fallback = true }) end,
+-- [已修改] <leader>F -> <leader>m (Make/Modify)
+vim.keymap.set({ "n", "v" }, "<leader>m", function() require("conform").format({ async = true, lsp_fallback = true }) end,
     { desc = "格式化文件 (Format)" })
+
 vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行 (Wrap)" })
 
 -- 诊断跳转
