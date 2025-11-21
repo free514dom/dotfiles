@@ -30,7 +30,6 @@ require("lazy").setup({
                 ensure_installed = {
                     "lua", "vim", "vimdoc", "query",
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
-                    -- java 已移除
                 },
                 sync_install = false,
                 auto_install = true,
