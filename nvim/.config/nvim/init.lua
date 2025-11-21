@@ -25,6 +25,9 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects", -- [新增] 文本对象支持
+        },
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -34,6 +37,19 @@ require("lazy").setup({
                 sync_install = false,
                 auto_install = true,
                 highlight = { enable = true },
+                -- [新增] 文本对象配置
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,               -- 自动跳转到下一个文本对象
+                        keymaps = {
+                            ["af"] = "@function.outer", -- 选中函数(含外围)
+                            ["if"] = "@function.inner", -- 选中函数(仅内容)
+                            ["ac"] = "@class.outer",    -- 选中类(含外围)
+                            ["ic"] = "@class.inner",    -- 选中类(仅内容)
+                        },
+                    },
+                },
             })
         end,
     },
@@ -51,9 +67,34 @@ require("lazy").setup({
     -- 已删除 folke/which-key.nvim 相关的代码块
     {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-        end,
+        -- [修改] 改用 opts 配置并添加快捷键
+        opts = {
+            on_attach = function(bufnr)
+                local gs = package.loaded.gitsigns
+                local function map(mode, l, r, opts)
+                    opts = opts or {}
+                    opts.buffer = bufnr
+                    vim.keymap.set(mode, l, r, opts)
+                end
+
+                -- 导航
+                map("n", "]c", function()
+                    if vim.wo.diff then return "]c" end
+                    vim.schedule(function() gs.next_hunk() end)
+                    return "<Ignore>"
+                end, { expr = true, desc = "跳转到下一处修改" })
+
+                map("n", "[c", function()
+                    if vim.wo.diff then return "[c" end
+                    vim.schedule(function() gs.prev_hunk() end)
+                    return "<Ignore>"
+                end, { expr = true, desc = "跳转到上一处修改" })
+
+                -- 常用操作
+                map("n", "<leader>hp", gs.preview_hunk, { desc = "预览修改块" })
+                map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, { desc = "显示行 Blame" })
+            end,
+        },
     },
     -- 已删除 kdheepak/lazygit.nvim
     {
@@ -180,8 +221,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.wrap = false
-vim.opt.linebreak = true
+vim.opt.wrap = false     -- 默认不换行，配合 linebreak
+vim.opt.linebreak = true -- 开启智能断行，仅在开启 wrap 时生效
 vim.opt.showbreak = "↪ "
 vim.opt.mouse = "a"
 vim.opt.hlsearch = true
