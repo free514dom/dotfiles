@@ -26,7 +26,7 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects", -- [新增] 文本对象支持
+            "nvim-treesitter/nvim-treesitter-textobjects",
         },
         config = function()
             require("nvim-treesitter.configs").setup({
@@ -37,16 +37,15 @@ require("lazy").setup({
                 sync_install = false,
                 auto_install = true,
                 highlight = { enable = true },
-                -- [新增]文本对象配置
                 textobjects = {
                     select = {
                         enable = true,
-                        lookahead = true,               -- 自动跳转到下一个文本对象
+                        lookahead = true,
                         keymaps = {
-                            ["af"] = "@function.outer", -- 选中函数(含外围)
-                            ["if"] = "@function.inner", -- 选中函数(仅内容)
-                            ["ac"] = "@class.outer",    -- 选中类(含外围)
-                            ["ic"] = "@class.inner",    -- 选中类(仅内容)
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
                         },
                     },
                 },
@@ -64,21 +63,17 @@ require("lazy").setup({
             })
         end,
     },
-    -- [新增] Which Key 插件
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
             vim.o.timeout = true
-            vim.o.timeoutlen = 300 -- 设置按键等待时间，必须设置否则弹出很慢
+            vim.o.timeoutlen = 300
         end,
-        opts = {
-            -- 这里可以添加自定义配置，留空使用默认值
-        },
+        opts = {},
     },
     {
         "lewis6991/gitsigns.nvim",
-        -- [修改] 改用 opts 配置并添加快捷键
         opts = {
             on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns
@@ -93,30 +88,27 @@ require("lazy").setup({
                     if vim.wo.diff then return "]c" end
                     vim.schedule(function() gs.next_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "跳转到下一处修改" })
+                end, { expr = true, desc = "下一处修改" })
 
                 map("n", "[c", function()
                     if vim.wo.diff then return "[c" end
                     vim.schedule(function() gs.prev_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "跳转到上一处修改" })
+                end, { expr = true, desc = "上一处修改" })
 
-                -- 常用操作
-                map("n", "<leader>hp", gs.preview_hunk, { desc = "预览修改块" })
-                map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, { desc = "显示行 Blame" })
+                -- [修改] Git 操作单字符映射
+                map("n", "<leader>p", gs.preview_hunk, { desc = "Git: 预览修改块 (Preview)" })
+                map("n", "<leader>B", function() gs.blame_line({ full = true }) end, { desc = "Git: 显示行 Blame" })
             end,
         },
     },
-    -- 已删除 kdheepak/lazygit.nvim
     {
         "stevearc/conform.nvim",
         event = { "BufWritePre" },
         cmd = { "ConformInfo" },
         opts = {
             formatters_by_ft = { lua = { "stylua" }, markdown = { "prettier" } },
-            -- [修改] 禁用保存时自动格式化，解决撤销回弹问题
-            -- 请使用 <leader>9 手动格式化
-            format_on_save = nil,
+            format_on_save = nil, -- 禁用自动保存格式化
         },
     },
     { "tpope/vim-repeat" },
@@ -141,7 +133,6 @@ require("lazy").setup({
             require("nvim-autopairs").setup({})
         end,
     },
-    -- [新增] nvim-surround: 快速增删改成对符号 (ys, ds, cs)
     {
         "kylechui/nvim-surround",
         version = "*",
@@ -150,7 +141,6 @@ require("lazy").setup({
             require("nvim-surround").setup({})
         end,
     },
-    -- [新增] indent-blankline: 显示缩进线
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -182,14 +172,17 @@ require("lazy").setup({
                         { buffer = bufnr, noremap = true, silent = true, desc = "LSP: " .. desc }
                     )
                 end
+                -- [保持] 基础 LSP 导航
                 map("n", "gd", vim.lsp.buf.definition, "跳转到定义")
                 map("n", "gD", vim.lsp.buf.declaration, "跳转到声明")
                 map("n", "K", vim.lsp.buf.hover, "显示悬浮文档")
                 map("n", "gi", vim.lsp.buf.implementation, "跳转到实现")
                 map("n", "gr", vim.lsp.buf.references, "查找引用")
-                map("n", "<leader>7", vim.lsp.buf.code_action, "代码操作")
-                map("n", "<leader>6", vim.lsp.buf.rename, "重命名符号")
-                map({ "n", "v" }, "<leader>8", vim.diagnostic.open_float, "显示诊断信息")
+
+                -- [修改] 使用单字符助记符
+                map("n", "<leader>a", vim.lsp.buf.code_action, "代码操作 (Action)")
+                map("n", "<leader>r", vim.lsp.buf.rename, "重命名符号 (Rename)")
+                map({ "n", "v" }, "<leader>e", vim.diagnostic.open_float, "显示诊断信息 (Error)")
             end)
 
             require("mason").setup({})
@@ -234,8 +227,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.wrap = false     -- 默认不换行，配合 linebreak
-vim.opt.linebreak = true -- 开启智能断行，仅在开启 wrap 时生效
+vim.opt.wrap = false
+vim.opt.linebreak = true
 vim.opt.showbreak = "↪ "
 vim.opt.mouse = "a"
 vim.opt.hlsearch = true
@@ -254,24 +247,23 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- Telescope
-vim.keymap.set("n", "<leader>2", function() require("telescope.builtin").find_files({ hidden = true }) end,
-    { desc = "查找文件 (含隐藏)" })
-vim.keymap.set("n", "<leader>3", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区" })
-vim.keymap.set("n", "<leader>4", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索" })
-vim.keymap.set("n", "<leader>5", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档" })
+-- [修改] Telescope 单字符映射
+vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end,
+    { desc = "查找文件 (Files)" })
+vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "查找缓冲区 (Buffers)" })
+vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "全局文本搜索 (Grep)" })
+vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "查找帮助文档 (Help)" })
 
--- 其他
-vim.keymap.set({ "n", "v" }, "<leader>9", function() require("conform").format({ async = true, lsp_fallback = true }) end,
-    { desc = "格式化文件" })
-vim.keymap.set("n", "<leader>0", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行" })
--- 已删除 Lazygit 快捷键 <leader>1
+-- [修改] 功能性单字符映射
+vim.keymap.set({ "n", "v" }, "<leader>F", function() require("conform").format({ async = true, lsp_fallback = true }) end,
+    { desc = "格式化文件 (Format)" })
+vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "切换自动换行 (Wrap)" })
 
--- [修改] 修复了此处原先错误的 "]"，改为 "]d" 以匹配 "[d" 并防止按键冲突
+-- 诊断跳转
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "跳转到上一个诊断" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "下一个诊断" })
 
--- 你自定义的 M/Q
+-- 自定义 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "删除一个单词 (daw)" })
 vim.keymap.set("n", "Q", "ciw", { desc = "修改一个单词 (ciw)" })
 
