@@ -103,7 +103,9 @@ require("lazy").setup({
         cmd = { "ConformInfo" },
         opts = {
             formatters_by_ft = { lua = { "stylua" }, markdown = { "prettier" } },
-            format_on_save = { timeout_ms = 1500, lsp_fallback = true },
+            -- [修改] 禁用保存时自动格式化，解决撤销回弹问题
+            -- 请使用 <leader>9 手动格式化
+            format_on_save = nil,
         },
     },
     { "tpope/vim-repeat" },
