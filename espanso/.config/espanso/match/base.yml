@@ -1,7 +1,7 @@
 matches:
   - trigger: "`1"
     replace: |-
-      我的核心部署文件只有deploy_final.sh,其他都是扯犊子不要单独裸露出来,我只想运行一下deploy_final.sh就能看到效果,要修改代码或者新增文件请你直接给我完整的代码不要指点我去修改
+      我没有理解到,请帮我浓缩成极致简短的精华摘要
 
   - trigger: "`2"
     replace: |-
@@ -34,7 +34,7 @@ matches:
 
   - trigger: "`8"
     replace: |-
-      我没有理解到,请帮我浓缩成极致简短的精华摘要
+      我的核心部署文件只有deploy_final.sh,其他都是扯犊子不要单独裸露出来,我只想运行一下deploy_final.sh就能看到效果,要修改代码或者新增文件请你直接给我完整的代码不要指点我去修改
 
   - trigger: "`9"
     replace: |-
