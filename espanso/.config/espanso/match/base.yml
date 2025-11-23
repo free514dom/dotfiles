@@ -11,15 +11,6 @@ matches:
     replace: |-
       怎么做这道题目这是我写的第一道算法题,只告诉我思考方式和尝试的思维链不要解出来了
 
-  - trigger: "`hello"
-    replace: |-
-      不讲原理,教我如何最简单的使用github action.
-
-  - trigger: "`rmix"
-    replace: |-
-      This file contains all the files in the repository combined into one.
-      I want to refactor the code, so please review it first.
-
   - trigger: "`par"
     replace: |-
       这里-example参数是什么单词的缩写,我需要知道它的原型（完整单词）才能更好的帮助记忆和理解.
@@ -39,18 +30,11 @@ matches:
       3.如果你删除了我源文件里面你觉得没有用的代码或者文字或者注释,一定要通知我
       4.这是最新的官方文档,我安装的xxx软件也是从最新的release安装的如果你觉得我的太旧了,那么其实真正的原因是你的知识库太旧了,一切以官方文档为准
       5.我的OS是fedora+sway+fish+neovim+zellij
-
-  - trigger: "bk"
-    replace: |-
       Example这个词是什么意思？我没有理解到。请你把它掰开，捏碎了揉碎了给我讲
 
   - trigger: "`tld"
     replace: |-
-      我没有理解到,请直接给我太长不看 (TL;DR) 版本 | 我没有理解到,请帮我浓缩成极致简短的精华摘要
-
-  - trigger: "`een"
-    replace: |-
-      我想理解为什么 Example 是这个单词的意思，你能解释一下它的词源——把它分解成有意义的部分，比如词根和前缀吗？我不是语言学家，我只是为了创建联系方便理解这个词也方便记忆这个词。(顺便列举它的近义词和反义词和对立词分别有哪些?)(理解这个词的常见误区有哪些?顺便使用这个词进行简单的造句)
+      我没有理解到,请帮我浓缩成极致简短的精华摘要
 
   - trigger: "`ecn"
     replace: |-
@@ -77,10 +61,6 @@ matches:
   - trigger: "`drive"
     replace: |-
       https://drive.proton.me/urls/3EW4VWDC8M#g1f6F4RLbGEQ
-
-  - trigger: "`lc"
-    replace: |-
-      https://www.techinterviewhandbook.org/grind75/
 
   - trigger: "`sb8"
     replace: |-
