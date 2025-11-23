@@ -170,7 +170,7 @@ keybinds clear-defaults=true {
         bind "Alt 9" { GoToTab 9; SwitchToMode "normal"; }
         
         // 使用 Alt+` 切换浮动窗口的显示/隐藏
-        bind "Alt `" { ToggleFloatingPanes; SwitchToMode "normal"; }
+        bind "Alt /" { ToggleFloatingPanes; SwitchToMode "normal"; }
         // END: Modified by Assistant
     }
     shared_except "locked" "move" {
