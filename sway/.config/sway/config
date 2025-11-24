@@ -185,7 +185,7 @@ bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-outp
 bindsym $mod+g exec flatpak run com.github.hluk.copyq toggle
 
 # 蓝牙一键开关：如果没有打开就打开，如果已经打开了就关闭
-bindsym $mod+b exec pkill -x blueman-manager || blueman-manager
+bindsym $mod+n exec pkill -x blueman-manager || blueman-manager
 
 # 缩放模式
 mode "resize" {
