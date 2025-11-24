@@ -126,3 +126,6 @@ function u_all --description "Unmount all custom mount points"
 end
 
 starship init fish | source
+# 锁定 Java 环境为 JDK 17 Temurin，防止系统更新自动切换
+set -gx JAVA_HOME /usr/lib/jvm/java-17-temurin-jdk
+fish_add_path --prepend $JAVA_HOME/bin
