@@ -1,7 +1,7 @@
 matches:
   - trigger: "`1"
     replace: |-
-      我没有理解到,请帮我浓缩成极致简短的精华摘要
+      我没有理解到,请帮我浓缩成极致简短的精华摘要.
 
   - trigger: "`2"
     replace: |-
