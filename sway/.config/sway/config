@@ -184,8 +184,8 @@ bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-outp
 # Toggle CopyQ main window
 bindsym $mod+g exec flatpak run com.github.hluk.copyq toggle
 
-# 蓝牙一键开关：如果没有打开就打开，如果已经打开了就关闭
-bindsym $mod+n exec pkill -x blueman-manager || blueman-manager
+# 逻辑：尝试连接 -> 成功则弹窗提示成功 -> 失败则弹窗提示失败
+bindsym $mod+n exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "蓝牙连接成功" "设备已连接" || notify-send -u critical "蓝牙连接失败" "请检查设备是否开机"'
 
 # 缩放模式
 mode "resize" {
