@@ -124,6 +124,7 @@ sudo systemctl enable --now v2raya
 
 # copyq
 flatpak install flathub com.github.hluk.copyq
+flatpak override --user --socket=x11 --nosocket=wayland com.github.hluk.copyq
 
 # eza
 sudo dnf -y install eza
