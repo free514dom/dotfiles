@@ -181,7 +181,7 @@ bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalP
 bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # Toggle CopyQ main window
-bindsym $mod+g exec copyq toggle
+bindsym $mod+g exec flatpak run com.github.hluk.copyq toggle
 
 # 缩放模式
 mode "resize" {
