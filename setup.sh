@@ -123,7 +123,7 @@ sudo dnf -y install v2ray v2raya
 sudo systemctl enable --now v2raya
 
 # copyq
-sudo dnf -y install copyq
+flatpak install flathub com.github.hluk.copyq
 
 # eza
 sudo dnf -y install eza

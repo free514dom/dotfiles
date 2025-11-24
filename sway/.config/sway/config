@@ -29,7 +29,7 @@ exec fcitx5 -d
 exec firefox
 
 # 启动剪贴板管理器
-exec copyq
+exec flatpak run com.github.hluk.copyq
 
 # 剪贴板监控与通知
 exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
