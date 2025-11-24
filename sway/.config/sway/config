@@ -30,7 +30,7 @@ exec firefox
 
 # 启动剪贴板管理器
 exec flatpak run com.github.hluk.copyq
-for_window [class="copyq"] floating enable
+for_window [class="copyq"] floating enable, resize set 960 500
 
 # 剪贴板监控与通知
 exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
@@ -42,7 +42,7 @@ exec ghostty -e zellij
 # 2. 匹配 app_id 为 com.mitchellh.ghostty 的窗口，并将其移动到暂存区
 for_window [app_id="com.mitchellh.ghostty"] move scratchpad
 
-for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="blueman-manager"] floating enable, resize set 600 400
 ### Workspace assignments
 # 将特定的应用程序分配到固定的工作区
 
