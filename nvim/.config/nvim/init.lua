@@ -33,6 +33,7 @@ require("lazy").setup({
                 ensure_installed = {
                     "lua", "vim", "vimdoc", "query",
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
+                    "java", -- [新增] 添加 java 语法高亮支持
                 },
                 sync_install = false,
                 auto_install = true,
@@ -88,7 +89,7 @@ require("lazy").setup({
                     if vim.wo.diff then return "]c" end
                     vim.schedule(function() gs.next_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "Git: Next Hunk" }) -- 英文更短，对齐更好
+                end, { expr = true, desc = "Git: Next Hunk" })
 
                 map("n", "[c", function()
                     if vim.wo.diff then return "[c" end
@@ -96,10 +97,7 @@ require("lazy").setup({
                     return "<Ignore>"
                 end, { expr = true, desc = "Git: Prev Hunk" })
 
-                -- [修改] Git 操作单字符映射
                 map("n", "<leader>p", gs.preview_hunk, { desc = "Git: Preview Hunk" })
-                
-                -- [已修改] <leader>B -> <leader>l (Line blame)
                 map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
             end,
         },
@@ -152,6 +150,8 @@ require("lazy").setup({
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         dependencies = {
+            -- [新增] nvim-java 必须作为依赖引入
+            { "nvim-java/nvim-java" },
             { "neovim/nvim-lspconfig" },
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
@@ -164,6 +164,9 @@ require("lazy").setup({
             { "windwp/nvim-autopairs" },
         },
         config = function()
+            -- [关键修改] nvim-java 要求在 lspconfig 设置之前进行 setup
+            require('java').setup()
+
             local lsp_zero = require("lsp-zero")
             lsp_zero.on_attach(function(client, bufnr)
                 local map = function(mode, lhs, rhs, desc)
@@ -174,17 +177,22 @@ require("lazy").setup({
                         { buffer = bufnr, noremap = true, silent = true, desc = desc }
                     )
                 end
-                -- [保持] 基础 LSP 导航 (去掉 "LSP:" 前缀，因为这些不通过 leader 触发)
                 map("n", "gd", vim.lsp.buf.definition, "Goto Definition")
                 map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
                 map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
                 map("n", "gi", vim.lsp.buf.implementation, "Goto Implementation")
                 map("n", "gr", vim.lsp.buf.references, "Goto References")
 
-                -- [修改] Leader 触发的 LSP 功能，加上前缀
                 map("n", "<leader>a", vim.lsp.buf.code_action, "LSP: Code Action")
                 map("n", "<leader>r", vim.lsp.buf.rename, "LSP: Rename Symbol")
                 map({ "n", "v" }, "<leader>e", vim.diagnostic.open_float, "LSP: Show Diagnostics")
+                
+                -- [新增] 仅在 Java 文件中绑定的快捷键
+                if client.name == "jdtls" then
+                   -- 你可以在这里添加 nvim-java 专属的快捷键，例如:
+                   -- map("n", "<leader>tm", require('java').test.run_current_method, "Java: Test Method")
+                   -- map("n", "<leader>tc", require('java').test.run_current_class, "Java: Test Class")
+                end
             end)
 
             require("mason").setup({})
@@ -195,10 +203,13 @@ require("lazy").setup({
                     "yamlls",
                     "taplo",
                     "lua_ls",
+                    "jdtls", -- [新增] 确保安装 Java 语言服务器
                 },
                 automatic_installation = true,
                 handlers = {
                     lsp_zero.default_setup,
+                    -- 注意：lsp-zero 的默认处理器会自动调用 require('lspconfig').jdtls.setup({})
+                    -- 这正是 nvim-java 所需要的（在 java.setup() 之后调用）。
                 },
             })
 
@@ -249,25 +260,20 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- [修改] Telescope 搜索类，统一使用 "Find:" 前缀
 vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end,
     { desc = "Find: Files" })
 vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Find: Buffers" })
 vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find: Text (Grep)" })
 vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Find: Help" })
 
--- [修改] 功能性单字符映射
--- [已修改] <leader>F -> <leader>m (Make/Modify)
 vim.keymap.set({ "n", "v" }, "<leader>m", function() require("conform").format({ async = true, lsp_fallback = true }) end,
     { desc = "Code: Format File" })
 
 vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "UI: Toggle Wrap" })
 
--- 诊断跳转
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic: Prev" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic: Next" })
 
--- 自定义 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "Edit: Delete Word" })
 vim.keymap.set("n", "Q", "ciw", { desc = "Edit: Change Word" })
 
