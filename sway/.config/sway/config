@@ -181,7 +181,7 @@ bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalP
 bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # Toggle CopyQ main window
-bindsym $mod+g exec flatpak run com.github.hluk.copyq toggle
+bindsym $mod+c exec flatpak run com.github.hluk.copyq toggle
 
 bindsym $mod+n exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "🎧 Sony耳机" "连接成功！" || notify-send -u critical "🎧 Sony耳机" "连接失败..."'
 
