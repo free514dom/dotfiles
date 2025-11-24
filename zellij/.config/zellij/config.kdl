@@ -283,3 +283,4 @@ load_plugins {
 web_client {
     font "monospace"
 }
+mouse_mode false
