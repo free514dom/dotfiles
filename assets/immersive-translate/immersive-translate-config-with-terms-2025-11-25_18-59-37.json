@@ -1,0 +1,49 @@
+{
+  "updatedAt": "2025-11-25T10:56:37.335Z",
+  "isChangedAlwaysTranslatedUrls": false,
+  "targetLanguage": "zh-CN",
+  "localUpdatedAt": "2025-11-25T10:56:37.335Z",
+  "interfaceLanguage": "zh-CN",
+  "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
+  "translationService": "siliconcloud",
+  "userTranslationServices": {
+    "translationService": "siliconcloud-free",
+    "inputTranslationService": "zhipu-free"
+  },
+  "customAiAssistants": [],
+  "inputTranslationService": "zhipu",
+  "inputTrailingTriggerKey": "=",
+  "generalRule": {
+    "selectionTranslation.add": {
+      "triggerMode": "direct",
+      "enableAutoRead": true
+    }
+  },
+  "terms": {
+    "version": 1,
+    "exportedAt": "2025-11-25T10:59:37.941Z",
+    "data": [
+      {
+        "id": "default",
+        "name": "默认术语库",
+        "author": "self",
+        "description": "默认常见术语库，包含常见术语",
+        "matches": [
+          "*"
+        ],
+        "glossaries": [
+          {
+            "k": "LLM",
+            "v": ""
+          },
+          {
+            "k": "LLMs",
+            "v": ""
+          }
+        ],
+        "order": 0,
+        "active": true
+      }
+    ]
+  }
+}
