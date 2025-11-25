@@ -6,3 +6,4 @@ selection-background = cell-background
 # 将选区前景设为与普通前景一致
 selection-foreground = cell-foreground
 
+keybind = ctrl+enter=unbind
