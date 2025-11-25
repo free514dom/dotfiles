@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- 设置 leader 键 (必须在 lazy setup 之前)
+-- 设置 leader 键
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -25,7 +25,7 @@ vim.g.coc_global_extensions = {
     'coc-sh',
     'coc-yaml',
     'coc-toml',
-    'coc-prettier' -- 用于 markdown 等格式化
+    'coc-prettier'
 }
 
 require("lazy").setup({
@@ -49,7 +49,7 @@ require("lazy").setup({
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
-                    "lua", "vim", "vimdoc", "query", "java", -- 确保安装 java
+                    "lua", "vim", "vimdoc", "query", "java",
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
                 },
                 sync_install = false,
@@ -121,7 +121,6 @@ require("lazy").setup({
             end,
         },
     },
-    -- 基础工具插件
     { "tpope/vim-repeat" },
     { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} },
     {
@@ -137,11 +136,14 @@ require("lazy").setup({
             vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Motion: Leap windows" })
         end,
     },
+    -- 自动括号插件 (已修复与 Coc 的冲突)
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
-            require("nvim-autopairs").setup({})
+            require("nvim-autopairs").setup({
+                map_cr = false -- 禁止它接管回车键，交给 Coc 处理
+            })
         end,
     },
     {
@@ -158,15 +160,14 @@ require("lazy").setup({
         opts = {},
     },
 
-    -- ==================== COC.NVIM (替换 LSP-Zero/Mason) ====================
+    -- ==================== COC.NVIM ====================
     {
         "neoclide/coc.nvim",
         branch = "release",
         config = function()
-            -- Coc 配置使用 Vimscript 风格的按键映射较为方便，这里用 lua 封装
-
             local keyset = vim.keymap.set
-            local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+            -- [修复] 将 replace_keycodes 设为 true，这是回车生效的关键
+            local opts = { silent = true, noremap = true, expr = true, replace_keycodes = true }
 
             -- Tab 键补全选择
             keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
@@ -239,7 +240,7 @@ vim.opt.incsearch = true
 vim.opt.undofile = true
 vim.o.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.updatetime = 300 -- Coc 推荐设置
+vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 -- ==================== 基础快捷键 ====================
