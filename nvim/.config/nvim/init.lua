@@ -116,8 +116,8 @@ require("lazy").setup({
                     return "<Ignore>"
                 end, { expr = true, desc = "Git: Prev Hunk" })
 
-                map("n", "<leader>p", gs.preview_hunk, { desc = "Git: Preview Hunk" })
-                map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
+                map("n", "<leader>gp", gs.preview_hunk, { desc = "Git: Preview Hunk" })
+                map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
             end,
         },
     },
@@ -136,7 +136,7 @@ require("lazy").setup({
             vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Motion: Leap windows" })
         end,
     },
-    -- 自动括号插件 (已修复与 Coc 的冲突)
+    -- 自动括号插件
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
@@ -166,7 +166,6 @@ require("lazy").setup({
         branch = "release",
         config = function()
             local keyset = vim.keymap.set
-            -- [修复] 将 replace_keycodes 设为 true，这是回车生效的关键
             local opts = { silent = true, noremap = true, expr = true, replace_keycodes = true }
 
             -- Tab 键补全选择
@@ -201,24 +200,23 @@ require("lazy").setup({
             end
             keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true, desc = "LSP: Hover" })
 
-            -- [重命名]
-            keyset("n", "<leader>r", "<Plug>(coc-rename)", { silent = true, desc = "LSP: Rename" })
+            -- [重命名] 标准化为 <leader>rn
+            keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true, desc = "LSP: Rename" })
 
-            -- [代码操作] (Code Action)
-            keyset("n", "<leader>a", "<Plug>(coc-codeaction-cursor)", { silent = true, desc = "LSP: Code Action" })
-            keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true, desc = "LSP: Code Action (Selected)" })
+            -- [代码操作] 标准化为 <leader>ca
+            keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", { silent = true, desc = "LSP: Code Action" })
+            keyset("x", "<leader>ca", "<Plug>(coc-codeaction-selected)", { silent = true, desc = "LSP: Code Action (Selected)" })
 
-            -- [格式化] 使用 <leader>m
-            keyset("n", "<leader>m", "<Plug>(coc-format)", { silent = true, desc = "Code: Format File" })
+            -- [格式化] 标准化为 <leader>cf
+            keyset("n", "<leader>cf", "<Plug>(coc-format)", { silent = true, desc = "Code: Format File" })
 
             -- [诊断]
             keyset("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = "Diagnostic: Prev" })
             keyset("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true, desc = "Diagnostic: Next" })
             keyset("n", "<leader>e", ":CocList diagnostics<CR>", { silent = true, desc = "LSP: Show Diagnostics List" })
 
-            -- [Coc 特定功能]
-            -- 组织导入 (Java常用)
-            keyset("n", "<leader>o", ":call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>", { silent = true, desc = "Code: Organize Imports" })
+            -- [组织导入] 标准化为 <leader>ci
+            keyset("n", "<leader>ci", ":call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>", { silent = true, desc = "Code: Organize Imports" })
         end
     }
 })
@@ -246,20 +244,23 @@ vim.opt.signcolumn = "yes"
 -- ==================== 基础快捷键 ====================
 vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Motion: Move down visual" })
 vim.keymap.set({ "n", "v" }, "k", "gk", { desc = "Motion: Move up visual" })
+
+-- [恢复] 强制禁用方向键 (Hard Mode)
 vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- Telescope 搜索
-vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end, { desc = "Find: Files" })
-vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Find: Buffers" })
-vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find: Text (Grep)" })
-vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Find: Help" })
+-- Telescope 搜索 (标准化 Leader 前缀: f=File/Find)
+vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files({ hidden = true }) end, { desc = "Find: Files" })
+vim.keymap.set("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Find: Buffers" })
+vim.keymap.set("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find: Text (Grep)" })
+vim.keymap.set("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Find: Help" })
 
-vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "UI: Toggle Wrap" })
+-- UI Toggle
+vim.keymap.set("n", "<leader>uw", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "UI: Toggle Wrap" })
 
--- 自定义 M/Q
+-- [恢复] 自定义 M/Q 映射
 vim.keymap.set("n", "M", "daw", { desc = "Edit: Delete Word" })
 vim.keymap.set("n", "Q", "ciw", { desc = "Edit: Change Word" })
 
