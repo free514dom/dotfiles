@@ -1,4 +1,3 @@
--- nvim/.config/nvim/init.lua
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -120,6 +119,23 @@ require("lazy").setup({
                 map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
             end,
         },
+    },
+    -- LazyGit (新增)
+    {
+        "kdheepak/lazygit.nvim",
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        keys = {
+            { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Git: LazyGit" }
+        }
     },
     { "tpope/vim-repeat" },
     { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} },
