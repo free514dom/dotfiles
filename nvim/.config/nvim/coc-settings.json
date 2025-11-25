@@ -1,0 +1,10 @@
+{
+  "java.enabled": true,
+  "java.jdt.ls.java.home": "/usr/lib/jvm/java-21-openjdk",
+  "java.import.maven.enabled": true,
+  "java.import.gradle.enabled": true,
+  "java.format.enabled": true,
+  "java.completion.enabled": true,
+  "suggest.noselect": false,
+  "diagnostic.checkCurrentLine": true
+}

@@ -12,7 +12,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- 设置 leader 键 (必须在 lazy setup 之前)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- 自动安装 coc 扩展
+vim.g.coc_global_extensions = {
+    'coc-java',
+    'coc-json',
+    'coc-lua',
+    'coc-vimlsp',
+    'coc-sh',
+    'coc-yaml',
+    'coc-toml',
+    'coc-prettier' -- 用于 markdown 等格式化
+}
+
 require("lazy").setup({
+    -- 主题
     {
         "folke/tokyonight.nvim",
         priority = 1000,
@@ -22,6 +39,7 @@ require("lazy").setup({
             end,
         },
     },
+    -- Treesitter (语法高亮)
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -31,7 +49,7 @@ require("lazy").setup({
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
-                    "lua", "vim", "vimdoc", "query",
+                    "lua", "vim", "vimdoc", "query", "java", -- 确保安装 java
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
                 },
                 sync_install = false,
@@ -52,6 +70,7 @@ require("lazy").setup({
             })
         end,
     },
+    -- Telescope (模糊搜索)
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -63,6 +82,7 @@ require("lazy").setup({
             })
         end,
     },
+    -- Which Key (按键提示)
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -72,6 +92,7 @@ require("lazy").setup({
         end,
         opts = {},
     },
+    -- Gitsigns (Git 集成)
     {
         "lewis6991/gitsigns.nvim",
         opts = {
@@ -83,12 +104,11 @@ require("lazy").setup({
                     vim.keymap.set(mode, l, r, opts)
                 end
 
-                -- 导航
                 map("n", "]c", function()
                     if vim.wo.diff then return "]c" end
                     vim.schedule(function() gs.next_hunk() end)
                     return "<Ignore>"
-                end, { expr = true, desc = "Git: Next Hunk" }) -- 英文更短，对齐更好
+                end, { expr = true, desc = "Git: Next Hunk" })
 
                 map("n", "[c", function()
                     if vim.wo.diff then return "[c" end
@@ -96,23 +116,12 @@ require("lazy").setup({
                     return "<Ignore>"
                 end, { expr = true, desc = "Git: Prev Hunk" })
 
-                -- [修改] Git 操作单字符映射
                 map("n", "<leader>p", gs.preview_hunk, { desc = "Git: Preview Hunk" })
-                
-                -- [已修改] <leader>B -> <leader>l (Line blame)
                 map("n", "<leader>l", function() gs.blame_line({ full = true }) end, { desc = "Git: Blame Line" })
             end,
         },
     },
-    {
-        "stevearc/conform.nvim",
-        event = { "BufWritePre" },
-        cmd = { "ConformInfo" },
-        opts = {
-            formatters_by_ft = { lua = { "stylua" }, markdown = { "prettier" } },
-            format_on_save = nil,
-        },
-    },
+    -- 基础工具插件
     { "tpope/vim-repeat" },
     { "pocco81/auto-save.nvim", event = "VeryLazy", opts = {} },
     {
@@ -148,77 +157,69 @@ require("lazy").setup({
         main = "ibl",
         opts = {},
     },
+
+    -- ==================== COC.NVIM (替换 LSP-Zero/Mason) ====================
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
-        dependencies = {
-            { "neovim/nvim-lspconfig" },
-            { "williamboman/mason.nvim" },
-            { "williamboman/mason-lspconfig.nvim" },
-            { "hrsh7th/nvim-cmp" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "L3MON4D3/LuaSnip" },
-            { "windwp/nvim-autopairs" },
-        },
+        "neoclide/coc.nvim",
+        branch = "release",
         config = function()
-            local lsp_zero = require("lsp-zero")
-            lsp_zero.on_attach(function(client, bufnr)
-                local map = function(mode, lhs, rhs, desc)
-                    vim.keymap.set(
-                        mode,
-                        lhs,
-                        rhs,
-                        { buffer = bufnr, noremap = true, silent = true, desc = desc }
-                    )
+            -- Coc 配置使用 Vimscript 风格的按键映射较为方便，这里用 lua 封装
+
+            local keyset = vim.keymap.set
+            local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+
+            -- Tab 键补全选择
+            keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+            keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+
+            -- 回车确认补全
+            keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+
+            -- 辅助函数：检查退格
+            function _G.check_back_space()
+                local col = vim.fn.col('.') - 1
+                return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+            end
+
+            -- [LSP 导航]
+            keyset("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = "LSP: Definition" })
+            keyset("n", "gD", "<Plug>(coc-declaration)", { silent = true, desc = "LSP: Declaration" })
+            keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = "LSP: Implementation" })
+            keyset("n", "gr", "<Plug>(coc-references)", { silent = true, desc = "LSP: References" })
+
+            -- [K] 显示文档
+            function _G.show_docs()
+                local cw = vim.fn.expand('<cword>')
+                if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+                    vim.api.nvim_command('h ' .. cw)
+                elseif vim.api.nvim_eval('coc#rpc#ready()') then
+                    vim.fn.CocActionAsync('doHover')
+                else
+                    vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
                 end
-                -- [保持] 基础 LSP 导航 (去掉 "LSP:" 前缀，因为这些不通过 leader 触发)
-                map("n", "gd", vim.lsp.buf.definition, "Goto Definition")
-                map("n", "gD", vim.lsp.buf.declaration, "Goto Declaration")
-                map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-                map("n", "gi", vim.lsp.buf.implementation, "Goto Implementation")
-                map("n", "gr", vim.lsp.buf.references, "Goto References")
+            end
+            keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true, desc = "LSP: Hover" })
 
-                -- [修改] Leader 触发的 LSP 功能，加上前缀
-                map("n", "<leader>a", vim.lsp.buf.code_action, "LSP: Code Action")
-                map("n", "<leader>r", vim.lsp.buf.rename, "LSP: Rename Symbol")
-                map({ "n", "v" }, "<leader>e", vim.diagnostic.open_float, "LSP: Show Diagnostics")
-            end)
+            -- [重命名]
+            keyset("n", "<leader>r", "<Plug>(coc-rename)", { silent = true, desc = "LSP: Rename" })
 
-            require("mason").setup({})
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "jsonls",
-                    "bashls",
-                    "yamlls",
-                    "taplo",
-                    "lua_ls",
-                },
-                automatic_installation = true,
-                handlers = {
-                    lsp_zero.default_setup,
-                },
-            })
+            -- [代码操作] (Code Action)
+            keyset("n", "<leader>a", "<Plug>(coc-codeaction-cursor)", { silent = true, desc = "LSP: Code Action" })
+            keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true, desc = "LSP: Code Action (Selected)" })
 
-            local cmp = require("cmp")
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-            cmp.setup({
-                sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                }),
-            })
-        end,
-    },
+            -- [格式化] 使用 <leader>m
+            keyset("n", "<leader>m", "<Plug>(coc-format)", { silent = true, desc = "Code: Format File" })
+
+            -- [诊断]
+            keyset("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = "Diagnostic: Prev" })
+            keyset("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true, desc = "Diagnostic: Next" })
+            keyset("n", "<leader>e", ":CocList diagnostics<CR>", { silent = true, desc = "LSP: Show Diagnostics List" })
+
+            -- [Coc 特定功能]
+            -- 组织导入 (Java常用)
+            keyset("n", "<leader>o", ":call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>", { silent = true, desc = "Code: Organize Imports" })
+        end
+    }
 })
 
 -- ==================== 基础选项 ====================
@@ -238,8 +239,8 @@ vim.opt.incsearch = true
 vim.opt.undofile = true
 vim.o.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.opt.updatetime = 300 -- Coc 推荐设置
+vim.opt.signcolumn = "yes"
 
 -- ==================== 基础快捷键 ====================
 vim.keymap.set({ "n", "v" }, "j", "gj", { desc = "Motion: Move down visual" })
@@ -249,23 +250,13 @@ vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
 
--- [修改] Telescope 搜索类，统一使用 "Find:" 前缀
-vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end,
-    { desc = "Find: Files" })
+-- Telescope 搜索
+vim.keymap.set("n", "<leader>f", function() require("telescope.builtin").find_files({ hidden = true }) end, { desc = "Find: Files" })
 vim.keymap.set("n", "<leader>b", "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Find: Buffers" })
 vim.keymap.set("n", "<leader>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Find: Text (Grep)" })
 vim.keymap.set("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Find: Help" })
 
--- [修改] 功能性单字符映射
--- [已修改] <leader>F -> <leader>m (Make/Modify)
-vim.keymap.set({ "n", "v" }, "<leader>m", function() require("conform").format({ async = true, lsp_fallback = true }) end,
-    { desc = "Code: Format File" })
-
 vim.keymap.set("n", "<leader>w", function() vim.opt.wrap = not vim.opt.wrap:get() end, { desc = "UI: Toggle Wrap" })
-
--- 诊断跳转
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Diagnostic: Prev" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Diagnostic: Next" })
 
 -- 自定义 M/Q
 vim.keymap.set("n", "M", "daw", { desc = "Edit: Delete Word" })
