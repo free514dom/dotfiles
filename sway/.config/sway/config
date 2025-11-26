@@ -203,3 +203,15 @@ bindsym $mod+r mode "resize"
 
 # 包含其他配置文件
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+
+# === Clipse 设置 ===
+# 1. 开机后台启动
+exec clipse -listen
+
+# 2. 设置浮动窗口规则 (让 clipse 居中显示，而不是铺满屏幕)
+for_window [app_id="clipse"] floating enable, move position center, resize set 80ppt 80ppt
+
+# 3. 绑定快捷键 (Mod+V)
+# 注意：Fedora Sway Spin 默认终端通常是 foot
+bindsym $mod+c exec foot -a clipse clipse
