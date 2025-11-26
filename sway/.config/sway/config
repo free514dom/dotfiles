@@ -160,16 +160,12 @@ input type:keyboard {
     # 显示/隐藏暂存区窗口
     bindsym $mod+grave scratchpad show, resize set 100 ppt 100 ppt, move position center
 
-# 功能: 选择区域截图到剪贴板 (最常用)
-bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
+# 截图: p=选区, Shift+p=全屏 | 无修饰=复制, Control=保存
+bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy && notify-send "区域截图" "已复制"
+bindsym $mod+Shift+p exec grim - | wl-copy && notify-send "全屏截图" "已复制"
+bindsym $mod+Control+p exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png && notify-send "区域已保存" "~/Pictures/Screenshots"'
+bindsym $mod+Control+Shift+p exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png && notify-send "全屏已保存" "~/Pictures/Screenshots"'
 
-# 功能: 全屏截图到剪贴板
-bindsym $mod+Shift+p exec grim - | wl-copy
-
-# 功能: 当前活动窗口截图到剪贴板
-bindsym $mod+Control+p exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy
-
-# 功能: 启动/播放音乐
 bindsym $mod+m exec sh -c 'killall mpv &> /dev/null || true; mpv --shuffle "$HOME/Music" & notify-send "Playing Music"'
 
 # 功能: 停止音乐 (使用 Shift 组合键，作为播放的关联操作)
