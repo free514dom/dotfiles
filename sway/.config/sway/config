@@ -170,11 +170,11 @@ bindsym $mod+backslash exec sh -c 'killall mpv &> /dev/null || true; mpv --shuff
 # 功能: 停止音乐 (使用 Shift 组合键，作为播放的关联操作)
 bindsym $mod+slash exec killall mpv
 
-# 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
-bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
-
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
 bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
+
+# 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
+bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # Toggle CopyQ main window
 bindsym $mod+c exec flatpak run com.github.hluk.copyq toggle
