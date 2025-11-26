@@ -16,6 +16,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- 自动安装 coc 扩展
+-- [包含]: coc-pyright (Python 语言服务)
 vim.g.coc_global_extensions = {
     'coc-java',
     'coc-json',
@@ -24,7 +25,9 @@ vim.g.coc_global_extensions = {
     'coc-sh',
     'coc-yaml',
     'coc-toml',
-    'coc-prettier'
+    'coc-prettier',
+    'coc-pyright',  -- Python LSP (补全、定义跳转、类型检查)
+    'coc-snippets'
 }
 
 require("lazy").setup({
@@ -47,9 +50,11 @@ require("lazy").setup({
         },
         config = function()
             require("nvim-treesitter.configs").setup({
+                -- [包含]: python
                 ensure_installed = {
                     "lua", "vim", "vimdoc", "query", "java",
                     "json", "bash", "yaml", "toml", "markdown", "markdown_inline",
+                    "python", -- Python 语法高亮
                 },
                 sync_install = false,
                 auto_install = true,
@@ -76,7 +81,7 @@ require("lazy").setup({
         config = function()
             require("telescope").setup({
                 defaults = {
-                    file_ignore_patterns = { "%.git/" },
+                    file_ignore_patterns = { "%.git/", "__pycache__" }, -- 忽略 Python 缓存
                 },
             })
         end,
@@ -120,7 +125,7 @@ require("lazy").setup({
             end,
         },
     },
-    -- LazyGit (新增)
+    -- LazyGit
     {
         "kdheepak/lazygit.nvim",
         cmd = {
