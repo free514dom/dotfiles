@@ -43,9 +43,6 @@ sudo dnf -y install @virtualization
 # wireshark-cli
 sudo dnf -y install wireshark-cli
 
-# ghostty
-sudo dnf -y copr enable scottames/ghostty && sudo dnf -y install ghostty
-
 # neovim
 sudo dnf -y install neovim python3-neovim
 

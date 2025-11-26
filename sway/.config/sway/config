@@ -31,12 +31,12 @@ exec firefox
 # 剪贴板监控与通知
 exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
 
-### V2P 新增：开机自启动 Ghostty 并将其发送到暂存区 ###
-# 1. 启动 Ghostty
-exec ghostty -e zellij
+### V2P 修改：开机自启动 Foot 并将其发送到暂存区 ###
+# 1. 启动 Foot (使用 -a 指定特殊的 app_id 防止与普通终端混淆) 并运行 zellij
+exec foot -a scratch_term -e zellij
 
-# 2. 匹配 app_id 为 com.mitchellh.ghostty 的窗口，并将其移动到暂存区
-for_window [app_id="com.mitchellh.ghostty"] move scratchpad
+# 2. 匹配特殊 app_id "scratch_term" 的窗口，并将其移动到暂存区
+for_window [app_id="scratch_term"] move scratchpad
 
 ### Workspace assignments
 # 将特定的应用程序分配到固定的工作区
