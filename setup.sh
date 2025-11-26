@@ -122,9 +122,8 @@ sudo dnf -y copr enable zhullyb/v2rayA
 sudo dnf -y install v2ray v2raya
 sudo systemctl enable --now v2raya
 
-# copyq
-flatpak install flathub com.github.hluk.copyq
-flatpak override --user --socket=x11 --nosocket=wayland com.github.hluk.copyq
+# clipse
+sudo dnf -y copr enable azandure/clipse && sudo dnf -y install clipse
 
 # eza
 sudo dnf -y install eza
