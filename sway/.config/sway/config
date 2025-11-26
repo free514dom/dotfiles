@@ -171,15 +171,15 @@ bindsym $mod+backslash exec sh -c 'killall mpv &> /dev/null || true; mpv --shuff
 bindsym $mod+slash exec killall mpv
 
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
-bindsym $mod+t exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
+bindsym $mod+comma exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
-bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
+bindsym $mod+period exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 # Toggle CopyQ main window
-bindsym $mod+c exec flatpak run com.github.hluk.copyq toggle
+bindsym $mod+apostrophe exec flatpak run com.github.hluk.copyq toggle
 
-bindsym $mod+n exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "🎧 Sony耳机" "连接成功！" || notify-send -u critical "🎧 Sony耳机" "连接失败..."'
+bindsym $mod+semicolon exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "🎧 Sony耳机" "连接成功！" || notify-send -u critical "🎧 Sony耳机" "连接失败..."'
 
 # 缩放模式
 mode "resize" {
