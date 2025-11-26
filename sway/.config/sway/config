@@ -165,10 +165,10 @@ bindsym $mod+equal exec grim - | wl-copy && notify-send "全屏截图" "已复�
 bindsym $mod+bracketleft exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png && notify-send "区域已保存" "~/Pictures/Screenshots"'
 bindsym $mod+bracketright exec sh -c 'mkdir -p ~/Pictures/Screenshots && grim ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png && notify-send "全屏已保存" "~/Pictures/Screenshots"'
 
-bindsym $mod+m exec sh -c 'killall mpv &> /dev/null || true; mpv --shuffle "$HOME/Music" & notify-send "Playing Music"'
+bindsym $mod+backslash exec sh -c 'killall mpv &> /dev/null || true; mpv --shuffle "$HOME/Music" & notify-send "Playing Music"'
 
 # 功能: 停止音乐 (使用 Shift 组合键，作为播放的关联操作)
-bindsym $mod+Shift+m exec killall mpv
+bindsym $mod+slash exec killall mpv
 
 # 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
 bindsym $mod+u exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
