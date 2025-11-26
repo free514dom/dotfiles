@@ -123,7 +123,7 @@ sudo dnf -y install v2ray v2raya
 sudo systemctl enable --now v2raya
 
 # clipse
-sudo dnf -y copr enable azandure/clipse && sudo dnf -y install clipse
+sudo dnf -y copr enable azandure/clipse && sudo dnf -y install clipse wl-clipboard
 
 # eza
 sudo dnf -y install eza
