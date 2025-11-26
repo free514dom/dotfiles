@@ -28,10 +28,6 @@ exec fcitx5 -d
 # 启动 Firefox
 exec firefox
 
-# 启动剪贴板管理器
-exec flatpak run com.github.hluk.copyq
-for_window [class="copyq"] floating enable, resize set 960 500
-
 # 剪贴板监控与通知
 exec wl-paste --watch notify-send -a "Clipboard" -i "edit-paste" "已复制"
 
@@ -176,9 +172,6 @@ bindsym $mod+comma exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-
 # 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
 bindsym $mod+period exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
 
-# Toggle CopyQ main window
-bindsym $mod+apostrophe exec flatpak run com.github.hluk.copyq toggle
-
 bindsym $mod+semicolon exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "🎧 Sony耳机" "连接成功！" || notify-send -u critical "🎧 Sony耳机" "连接失败..."'
 
 # 缩放模式
@@ -214,4 +207,4 @@ for_window [app_id="clipse"] floating enable, move position center, resize set 8
 
 # 3. 绑定快捷键 (Mod+V)
 # 注意：Fedora Sway Spin 默认终端通常是 foot
-bindsym $mod+c exec foot -a clipse clipse
+bindsym $mod+apostrophe exec foot -a clipse clipse
