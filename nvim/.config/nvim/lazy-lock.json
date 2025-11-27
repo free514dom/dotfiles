@@ -1,6 +1,6 @@
 {
   "auto-save.nvim": { "branch": "main", "commit": "979b6c82f60cfa80f4cf437d77446d0ded0addf0" },
-  "coc.nvim": { "branch": "release", "commit": "12a053dba1a9d822552f4de66706b59b541bf080" },
+  "coc.nvim": { "branch": "release", "commit": "c18a26cced383145e25fa5e003fd8c31af2b1332" },
   "gitsigns.nvim": { "branch": "main", "commit": "cdafc320f03f2572c40ab93a4eecb733d4016d07" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
