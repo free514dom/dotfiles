@@ -35,11 +35,20 @@ require("lazy").setup({
     {
         "folke/tokyonight.nvim",
         priority = 1000,
-        opts = {
-            on_colors = function(colors)
-                colors.bg = "#000000"
-            end,
-        },
+        lazy = false, -- 确保在启动时加载，不要延迟
+        config = function()
+            -- 在这里设置透明选项
+            require("tokyonight").setup({
+                style = "storm", -- 主题风格，可选 "storm", "moon", "night", "day"
+                transparent = true, -- <--- 核心：开启透明背景
+                styles = {
+                    sidebars = "transparent", -- 文件树等侧边栏透明
+                    floats = "transparent",   -- 浮动窗口透明
+                },
+            })
+            -- 在配置完成后直接加载主题
+            vim.cmd("colorscheme tokyonight")
+        end,
     },
     -- Treesitter (语法高亮)
     {
@@ -285,4 +294,3 @@ vim.keymap.set("n", "<leader>uw", function() vim.opt.wrap = not vim.opt.wrap:get
 vim.keymap.set("n", "M", "daw", { desc = "Edit: Delete Word" })
 vim.keymap.set("n", "Q", "ciw", { desc = "Edit: Change Word" })
 
-vim.cmd("colorscheme tokyonight")
