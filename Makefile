@@ -2,7 +2,7 @@
 # Makefile for dotfiles (V7.1 - Smart Systemd Handling)
 # =============================================================================
 
-PACKAGES       := nvim scripts espanso fish sway zellij systemd
+PACKAGES       := nvim scripts espanso fish sway zellij systemd foot
 
 # ✨ 智能地找出需要直接启用的单元
 # 1. 找到所有的 .timer 文件
