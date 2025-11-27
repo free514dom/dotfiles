@@ -1,9 +1,0 @@
-theme = "Pro.conf"
-mouse-scroll-multiplier = 0
-# 将选区背景设为与普通背景一致
-selection-background = cell-background
-
-# 将选区前景设为与普通前景一致
-selection-foreground = cell-foreground
-
-keybind = ctrl+enter=unbind
