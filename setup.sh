@@ -167,5 +167,8 @@ sudo npm install -g prettier
 # repomix
 sudo npm install -g repomix
 
+# neoovim node for coc lsp
+sudo npm install -g neovim
+
 # fish
 sudo dnf -y install fish && chsh -s /usr/bin/fish
