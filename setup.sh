@@ -137,9 +137,6 @@ cd vagrant-alpine
 vagrant init generic/alpine318
 vagrant plugin install vagrant-libvirt
 
-# uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
 # cursor-cli
 curl https://cursor.com/install -fsS | bash
 
