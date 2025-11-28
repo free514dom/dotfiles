@@ -29,7 +29,7 @@ exec fcitx5 -d
 exec firefox
 
 # 剪贴板监控与通知 (修复版：使用 cat 吃掉 stdin 防止管道破裂)
-exec wl-paste --watch sh -c 'cat > /dev/null && notify-send -a "Clipboard" -i "edit-paste" "已复制"'
+exec sh -c 'sleep 5; wl-paste -t text --watch sh -c "cat > /dev/null && notify-send -a Clipboard -i edit-paste \"已复制\""'
 
 ### V2P 修改：开机自启动 Foot 并将其发送到暂存区 ###
 # 1. 启动 Foot (使用 -a 指定特殊的 app_id 防止与普通终端混淆) 并运行 zellij 0.8不透明度
