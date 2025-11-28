@@ -169,8 +169,8 @@ bindsym $mod+slash exec killall mpv
 # 功能: 使用 repomix 打包 dotfiles 并将文件 URI 复制到剪贴板
 bindsym $mod+comma exec sh -c 'repomix $HOME/dotfiles/ -o /tmp/dotfiles-repomix-output.xml && echo "file://$(realpath /tmp/dotfiles-repomix-output.xml)" | wl-copy -t text/uri-list'
 
-# 功能: 使用 repomix 打包远程 FinalProject 并将文件 URI 复制到剪贴板
-bindsym $mod+period exec sh -c 'repomix --remote https://github.com/free514dom/FinalProject -o /tmp/FinalProject-repomix-output.xml && echo "file://$(realpath /tmp/FinalProject-repomix-output.xml)" | wl-copy -t text/uri-list'
+# 功能: 使用 repomix 打包远程 fyp 并将文件 URI 复制到剪贴板
+bindsym $mod+period exec sh -c 'repomix --remote https://github.com/free514dom/fyp -o /tmp/fyp-repomix-output.xml && echo "file://$(realpath /tmp/fyp-repomix-output.xml)" | wl-copy -t text/uri-list'
 
 bindsym $mod+semicolon exec sh -c 'bluetoothctl connect 14:06:A7:B8:47:3A && notify-send "🎧 Sony耳机" "连接成功！" || notify-send -u critical "🎧 Sony耳机" "连接失败..."'
 
