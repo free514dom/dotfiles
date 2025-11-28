@@ -100,14 +100,8 @@ espanso start
 # rclone
 sudo dnf -y install rclone
 
-# android-tools
-sudo dnf -y install android-tools
-
 # github-cli
 sudo dnf -y install gh
-
-# minicom
-sudo dnf -y install minicom
 
 # daed
 sudo dnf -y copr enable zhullyb/v2rayA
@@ -120,7 +114,7 @@ sudo dnf -y install v2ray v2raya
 sudo systemctl enable --now v2raya
 
 # clipse
-sudo dnf -y copr enable azandure/clipse && sudo dnf -y install clipse wl-clipboard
+sudo dnf -y copr enable azandure/clipse && sudo dnf -y install clipse
 
 # eza
 sudo dnf -y install eza
