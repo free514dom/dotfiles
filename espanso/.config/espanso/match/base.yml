@@ -60,3 +60,7 @@ matches:
   - trigger: "`c"
     replace: |-
       你好我叫傻子,给傻子的spring boot教程,不讲原理直接开始做(我就用类似记事本的东西,OS有可能是fedora,我也太确定是什么OS)
+
+  - trigger: "`d"
+    replace: |-
+      写一个对比伪代码让我看看区别
