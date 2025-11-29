@@ -64,3 +64,7 @@ matches:
   - trigger: "`$"
     replace: |-
       你好我叫傻子,给傻子的spring boot教程,不讲原理直接开始做(我就用类似记事本的东西,OS有可能是fedora,我也太确定是什么OS)
+     
+  - trigger: "`%"
+    replace: |-
+      ???听不懂你在说什么
