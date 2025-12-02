@@ -1,0 +1,105 @@
+{
+  "updatedAt": "2025-12-02T11:40:18.009Z",
+  "isChangedAlwaysTranslatedUrls": true,
+  "targetLanguage": "zh-CN",
+  "localUpdatedAt": "2025-12-02T11:40:18.009Z",
+  "interfaceLanguage": "zh-CN",
+  "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
+  "translationService": "siliconcloud",
+  "userTranslationServices": {
+    "translationService": "siliconcloud-free",
+    "inputTranslationService": "zhipu-free"
+  },
+  "customAiAssistants": [],
+  "inputTranslationService": "zhipu",
+  "inputTrailingTriggerKey": "=",
+  "generalRule": {
+    "selectionTranslation.add": {
+      "triggerMode": "direct",
+      "enableAutoRead": true,
+      "urlPattern": {
+        "matches": [],
+        "excludeMatches": [
+          "https://www.codecademy.com/*",
+          "https://aistudio.google.com/*"
+        ]
+      }
+    }
+  },
+  "notificationShowTimes": {
+    "new-guide": "1764400593226"
+  },
+  "pcFloatBallMainBtnTooltipShownCount": 34,
+  "enableInputTranslation": true,
+  "isShowInputTranslationConsent": false,
+  "translationUrlPattern": {
+    "matches": [],
+    "excludeMatches": [
+      "www.codecademy.com"
+    ]
+  },
+  "pcFloatBall": {
+    "enable": true,
+    "enableSidePanel": true,
+    "enablePinSidePanel": true,
+    "transparency": 30,
+    "blockUrls": [
+      "*immersivetranslate.*/preview",
+      "*.immersivetranslate.*/download-subtitle*",
+      "dash.immersivetranslate.*/*"
+    ],
+    "guideBlockUrls": [
+      "https://immersivetranslate.*/accounts/login*",
+      "https://immersivetranslate.*/profile/",
+      "https://onboarding.immersivetranslate.**",
+      "https://*.immersivetranslate.*/*/intro/tutorial/step-1*",
+      "https://*.immersivetranslate.*/*/new-guide/step-1*",
+      "https://*.immersivetranslate.*/*/new-guide/step-2*"
+    ],
+    "guideContentBlockUrls": [
+      "https://*.immersivetranslate.*/*/tutorial/*",
+      "https://*.immersivetranslate.*/*/intro/*",
+      "https://*.immersivetranslate.*/*/init/*",
+      "https://*.immersivetranslate.*/*/new-guide/*"
+    ],
+    "guideArrowPermanentUrls": [
+      "https://*.immersivetranslate.*/*/intro/step-1",
+      "https://*.immersivetranslate.*/*/tutorial/step-2",
+      "https://*.immersivetranslate.*/*/new-guide/step-3"
+    ],
+    "defaultShowGuideNums": 4,
+    "clickType": "translate",
+    "afterInstalledAt": "2023-10-28",
+    "fixedPosition": "right",
+    "upgradeVisible": true,
+    "upgradeShowLimit": 20,
+    "isPc": true
+  },
+  "terms": {
+    "version": 1,
+    "exportedAt": "2025-12-02T11:41:11.653Z",
+    "data": [
+      {
+        "id": "default",
+        "name": "默认术语库",
+        "author": "self",
+        "description": "默认常见术语库，包含常见术语",
+        "matches": [
+          "*"
+        ],
+        "glossaries": [
+          {
+            "k": "LLM",
+            "v": ""
+          },
+          {
+            "k": "LLMs",
+            "v": ""
+          }
+        ],
+        "order": 0,
+        "active": true
+      }
+    ]
+  }
+}
