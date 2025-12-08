@@ -1,0 +1,29 @@
+{
+  "timeStamp": 1765217835787,
+  "version": "1.68.0",
+  "userSettings": {
+    "importedLists": [],
+    "popupPanelSections": 31
+  },
+  "selectedFilterLists": [
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-unbreak",
+    "ublock-quick-fixes",
+    "easylist",
+    "easyprivacy",
+    "urlhaus-1",
+    "plowe-0"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "chrome-extension-scheme",
+    "moz-extension-scheme"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-csp-reports: * true",
+  "userFilters": "! Nov 26, 2025 https://www.tutorialspoint.com\nwww.tutorialspoint.com##.\\[\\&_a\\]\\:hover\\:underline.h-\\(--nav-1-height\\).items-center.flex.text-white.top-0.max-lg\\:sticky.text-sm.z-\\[11\\].bg-\\[\\#2c9d30\\]\nwww.tutorialspoint.com##.border-gray-300.border-b.items-center.flex.px-3.lg\\:top-0.top-\\(--nav-1-height\\).bg-white.sticky.z-\\[11\\].h-\\(--nav-2-height\\)\nwww.tutorialspoint.com##.text-sm.bg-neutral-800\n\n! Nov 26, 2025 https://www.bilibili.com\nwww.bilibili.com##.bili-header__channel\nwww.bilibili.com##.is-version8.container\n||i0.hdslb.com/bfs/archive/ac7edcb6a0cd83bc3a7a7a0a3730ba69c17f47ab.png$image\n||i0.hdslb.com/bfs/archive/12573bbe82fe6e24e49c199186936b5b15d6572d.png@3840w_360h_1c*?mirror_report_banner=1$image\n||i0.hdslb.com/bfs/archive/12573bbe82fe6e24e49c199186936b5b15d6572d.png@3840w_360h_1c*?mirror_report_banner=1$image\n||i0.hdslb.com/bfs/archive/12573bbe82fe6e24e49c199186936b5b15d6572d.png@3840w_360h_1c*?mirror_report_banner=1$image\nwww.bilibili.com##.recommended-container_floor-aside\n||i0.hdslb.com/bfs/archive/ac7edcb6a0cd83bc3a7a7a0a3730ba69c17f47ab.png$image\nwww.bilibili.com##.right-entry\nwww.bilibili.com##.entry-title\nwww.bilibili.com##.download-client-trigger.download-entry\nwww.bilibili.com##.logo-img\nwww.bilibili.com##.default-entry\nwww.bilibili.com##.header-banner__inner\nwww.bilibili.com##.bili-header__banner\nwww.bilibili.com##.search-panel\n\n! Nov 26, 2025 https://search.bilibili.com\nsearch.bilibili.com###bili-header-container\nsearch.bilibili.com##.bili-footer\nsearch.bilibili.com##.search-header\nsearch.bilibili.com##.search-all-list.user-list\nsearch.bilibili.com##[href=\"//www.bilibili.com/v/customer-service\"] > .vui_button--active-shrink.vui_button\nsearch.bilibili.com##.visible.btn-to-top.vui_button--active-shrink.vui_button\n\n! Nov 26, 2025 https://www.bilibili.com\nwww.bilibili.com##.right-container\nwww.bilibili.com###commentapp\nwww.bilibili.com###biliMainHeader\nwww.bilibili.com##.video-tag-container\nwww.bilibili.com##.act-end.activity-m-v1\n||i2.hdslb.com/bfs/sycp/sanlian/image/a8077869bb0e44149f048689648c81c8.jpeg@.avif$image\nwww.bilibili.com##.left-banner.strip-ad.ad-report\n\n! Nov 26, 2025 https://www.w3schools.com\nwww.w3schools.com###footerwrapper\nwww.w3schools.com###wrappercontainer\nwww.w3schools.com##.m12.l2.w3-col\nwww.w3schools.com##.w3-white.notranslate.w3-bar\nwww.w3schools.com###subtopnav\nwww.w3schools.com##.w3-collapse.w3-sidebar\nwww.w3schools.com##.topnavcontainer\nwww.w3schools.com##.bs-compact-bar\n\n! Nov 26, 2025 https://www.tutorialspoint.com\nwww.tutorialspoint.com##[src=\"/requests/images/requests-mini-logo.jpg\"]\nwww.tutorialspoint.com##.toc-nav\nwww.tutorialspoint.com##.button--blue.button\n\n! Nov 26, 2025 https://www.youtube.com\nwww.youtube.com###secondary\n\n! Dec 9, 2025 https://www.youtube.com\nwww.youtube.com###content-wrapper\nwww.youtube.com##.ytd-rich-grid-renderer.style-scope > .ytd-rich-section-renderer.style-scope\nwww.youtube.com##ytd-mini-guide-renderer.ytd-app.style-scope\nwww.youtube.com###masthead > .ytd-masthead.style-scope\nwww.youtube.com###below\nwww.youtube.com##.ytp-left-controls\n\n! Dec 9, 2025 https://www.bilibili.com\n\n! Dec 9, 2025 https://www.bilibili.com\nwww.bilibili.com##.win.video-info-container\nwww.bilibili.com##.video-toolbar-container\nwww.bilibili.com##.basic-desc-info\nwww.bilibili.com##.bpx-player-video-info-online\nwww.bilibili.com##.bpx-player-video-info-dm\nwww.bilibili.com##.bpx-player-video-info-divide\nwww.bilibili.com##.bpx-player-video-inputbar-wrap > .bpx-player-dm-wrap\nwww.bilibili.com##.bpx-player-video-inputbar-wrap\nwww.bilibili.com##.focus.bpx-player-checkBox-hide.bpx-player-video-inputbar\nwww.bilibili.com##.fixed-sidenav-storage\nwww.bilibili.com###nav-searchform"
+}
