@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2025-12-08T14:12:04.539Z",
+  "updatedAt": "2025-12-08T14:18:42.228Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2025-12-08T14:12:04.539Z",
+  "localUpdatedAt": "2025-12-08T14:18:42.228Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
   "translationService": "siliconcloud",
@@ -12,7 +12,7 @@
   },
   "customAiAssistants": [],
   "inputTranslationService": "zhipu",
-  "inputTrailingTriggerKey": "=",
+  "inputTrailingTriggerKey": "space",
   "generalRule": {
     "selectionTranslation.add": {
       "triggerMode": "mini",
@@ -121,7 +121,7 @@
   },
   "terms": {
     "version": 1,
-    "exportedAt": "2025-12-08T14:15:38.618Z",
+    "exportedAt": "2025-12-08T14:19:56.271Z",
     "data": [
       {
         "id": "default",
