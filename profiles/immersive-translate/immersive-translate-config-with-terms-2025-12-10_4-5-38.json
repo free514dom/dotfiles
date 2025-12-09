@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2025-12-09T19:55:49.741Z",
+  "updatedAt": "2025-12-09T20:05:19.057Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2025-12-09T19:55:49.741Z",
+  "localUpdatedAt": "2025-12-09T20:05:19.057Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
   "translationService": "siliconcloud",
@@ -26,7 +26,7 @@
   "notificationShowTimes": {
     "new-guide": "1764400593226"
   },
-  "pcFloatBallMainBtnTooltipShownCount": 35,
+  "pcFloatBallMainBtnTooltipShownCount": 37,
   "enableInputTranslation": true,
   "isShowInputTranslationConsent": false,
   "translationUrlPattern": {
@@ -44,7 +44,14 @@
       "x.com",
       "meta.stackoverflow.com",
       "news.ycombinator.com",
-      "stackoverflow.com"
+      "stackoverflow.com",
+      "aistudio.google.com",
+      "gemini.google.com",
+      "chatgpt.com",
+      "www.perplexity.ai",
+      "grok.com",
+      "poe.com",
+      "www.techinterviewhandbook.org"
     ],
     "excludeMatches": [
       "www.codecademy.com"
@@ -151,7 +158,7 @@
   "selectTranslationFont": "Times New Roman",
   "terms": {
     "version": 1,
-    "exportedAt": "2025-12-09T19:56:54.328Z",
+    "exportedAt": "2025-12-09T20:05:38.076Z",
     "data": [
       {
         "id": "default",
