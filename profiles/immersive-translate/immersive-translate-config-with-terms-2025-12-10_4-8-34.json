@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2025-12-09T20:05:19.057Z",
+  "updatedAt": "2025-12-09T20:07:25.823Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2025-12-09T20:05:19.057Z",
+  "localUpdatedAt": "2025-12-09T20:07:25.823Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
   "translationService": "siliconcloud",
@@ -156,9 +156,15 @@
     }
   },
   "selectTranslationFont": "Times New Roman",
+  "translationLanguagePattern": {
+    "matches": [
+      "en"
+    ],
+    "excludeMatches": []
+  },
   "terms": {
     "version": 1,
-    "exportedAt": "2025-12-09T20:05:38.076Z",
+    "exportedAt": "2025-12-09T20:08:34.920Z",
     "data": [
       {
         "id": "default",
