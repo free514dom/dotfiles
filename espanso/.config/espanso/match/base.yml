@@ -1,4 +1,11 @@
 matches:
+  - trigger: "`!"
+    replace: |-
+      Only translate the English into Chinese：{{clipb}}
+    vars:
+      - name: "clipb"
+        type: "clipboard"
+
   - trigger: "`1"
     replace: |-
       我没有理解到,请帮我浓缩成极致简短的精华摘要.
@@ -42,13 +49,6 @@ matches:
   - trigger: "`0"
     replace: |-
       写一个对比伪代码让我看看区别
-
-  - trigger: "`!"
-    replace: |-
-      Only translate the English into Chinese：{{clipb}}
-    vars:
-      - name: "clipb"
-        type: "clipboard"
 
   - trigger: "`@"
     replace: |-
