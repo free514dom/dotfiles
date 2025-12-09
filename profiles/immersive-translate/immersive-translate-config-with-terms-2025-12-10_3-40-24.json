@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2025-12-09T19:21:52.962Z",
+  "updatedAt": "2025-12-09T19:39:32.521Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2025-12-09T19:21:52.962Z",
+  "localUpdatedAt": "2025-12-09T19:39:32.521Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
   "translationService": "siliconcloud",
@@ -39,7 +39,12 @@
       "minecraft.wiki",
       "www.digitalocean.com",
       "fabricmc.net",
-      "vast.ai"
+      "vast.ai",
+      "www.reddit.com",
+      "x.com",
+      "meta.stackoverflow.com",
+      "news.ycombinator.com",
+      "stackoverflow.com"
     ],
     "excludeMatches": [
       "www.codecademy.com"
@@ -129,9 +134,23 @@
   "translationServiceExpanded": {
     "custom": true
   },
+  "translationTheme": "grey",
+  "translationThemePatterns": {
+    "grey": {
+      "zoom": "1",
+      "weight": "400",
+      "italics": true
+    },
+    "dashedBorder": {
+      "borderRadius": "0",
+      "zoom": "57",
+      "italics": true
+    }
+  },
+  "selectTranslationFont": "Times New Roman",
   "terms": {
     "version": 1,
-    "exportedAt": "2025-12-09T19:22:54.228Z",
+    "exportedAt": "2025-12-09T19:40:24.989Z",
     "data": [
       {
         "id": "default",
