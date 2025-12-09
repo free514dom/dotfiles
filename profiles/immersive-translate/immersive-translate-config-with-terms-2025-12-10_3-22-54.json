@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2025-12-08T14:18:42.228Z",
+  "updatedAt": "2025-12-09T19:21:52.962Z",
   "isChangedAlwaysTranslatedUrls": true,
   "targetLanguage": "zh-CN",
-  "localUpdatedAt": "2025-12-08T14:18:42.228Z",
+  "localUpdatedAt": "2025-12-09T19:21:52.962Z",
   "interfaceLanguage": "zh-CN",
   "translationServiceChangedbyUserAt": "2025-11-25T10:56:01.343Z",
   "translationService": "siliconcloud",
@@ -26,11 +26,21 @@
   "notificationShowTimes": {
     "new-guide": "1764400593226"
   },
-  "pcFloatBallMainBtnTooltipShownCount": 34,
+  "pcFloatBallMainBtnTooltipShownCount": 35,
   "enableInputTranslation": true,
   "isShowInputTranslationConsent": false,
   "translationUrlPattern": {
-    "matches": [],
+    "matches": [
+      "www.google.com",
+      "www.youtube.com",
+      "alternativeto.net",
+      "github.com",
+      "huggingface.co",
+      "minecraft.wiki",
+      "www.digitalocean.com",
+      "fabricmc.net",
+      "vast.ai"
+    ],
     "excludeMatches": [
       "www.codecademy.com"
     ]
@@ -121,7 +131,7 @@
   },
   "terms": {
     "version": 1,
-    "exportedAt": "2025-12-08T14:19:56.271Z",
+    "exportedAt": "2025-12-09T19:22:54.228Z",
     "data": [
       {
         "id": "default",
