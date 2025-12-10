@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================= 配置区域 =================
-DEVICE_PARTITION="/dev/sdb1"   # 硬盘设备名
+DEVICE_PARTITION="/dev/sdb1"   # 硬盘分区 (用于挂载/卸载)
 DRIVE_LABEL="MyPassport"       # 硬盘标签
 
 # ================= 系统变量 =================
@@ -10,7 +10,7 @@ MOUNT_POINT="/run/media/$CURRENT_USER/$DRIVE_LABEL"
 TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
 TRASH_DIR_ROOT="$MOUNT_POINT/.Trash_Bin/$TIMESTAMP"
 
-echo "=== 🛡️ 混合策略智能备份 (安全+极速) ==="
+echo "=== 🛡️ 混合策略备份 + 自动卸载 ==="
 echo "    📅 时间戳: $TIMESTAMP"
 
 # --- 1. 挂载检查 ---
@@ -18,7 +18,7 @@ if [ ! -d "$MOUNT_POINT" ]; then
     echo "⚠️  未检测到挂载点，尝试自动挂载 $DEVICE_PARTITION ..."
     udisksctl mount -b "$DEVICE_PARTITION"
     if [ ! -d "$MOUNT_POINT" ]; then
-        echo "❌ 挂载失败！"
+        echo "❌ 挂载失败！请检查设备连接。"
         exit 1
     fi
 else
@@ -28,25 +28,17 @@ fi
 echo "🗑️  后悔药机制: 被删/改的文件 -> .Trash_Bin/$TIMESTAMP"
 echo ""
 
-# --- 2. 定义核心同步函数 ---
-# 参数1: 源目录
-# 参数2: 目标目录名
-# 参数3: 额外的 Rclone 参数 (用于区分极速模式还是安全模式)
+# --- 2. 核心同步函数 ---
 sync_task() {
     local SRC="$1"
     local DEST_NAME="$2"
     local SPECIAL_FLAGS="$3"
-    
     local FULL_DEST="$MOUNT_POINT/$DEST_NAME"
     local BACKUP_DIR="$TRASH_DIR_ROOT/$DEST_NAME"
 
     echo "🔄 [同步中] $(basename "$SRC")"
     
-    # 基础参数 (所有任务通用)
-    # --fast-list: 减少磁盘寻道
-    # --delete-during: 边传边删
-    # --backup-dir: 开启回收站
-    
+    # 基础参数: --fast-list(加速), --delete-during(同步删除), --backup-dir(回收站)
     rclone sync "$SRC" "$FULL_DEST" \
         --progress \
         --transfers 32 \
@@ -66,24 +58,18 @@ sync_task() {
     echo "-----------------------------------------------------"
 }
 
-# ================= 3. 执行具体任务 (策略分离) =================
+# ================= 3. 执行任务 =================
 
-# 🎵 任务 A: 音乐库
-# 策略: 【极速模式】 --size-only
-# 原因: 媒体文件大，只改内容不改大小的情况极少，速度优先
+# 🎵 任务 A: 音乐库 (极速模式)
 sync_task "$HOME/Music" "Music_Backup" "--size-only"
 
-# 📄 任务 B: 文档库 (MyPublic)
-# 策略: 【安全模式】 --modify-window 2s
-# 原因: 纯文本修改可能不改变大小，必须对比时间。2s 窗口解决跨文件系统时间误差。
+# 📄 任务 B: 文档库 (安全模式, 完整备份)
 sync_task "$HOME/MyPublic" "MyPublic_Backup" "--modify-window 2s"
 
-# ⚙️ 任务 C: Dotfiles (Git仓库)
-# 策略: 【安全模式】 --modify-window 2s
-# 原因: 代码修改极其敏感，必须精确。同时不排除 .git 目录，完整备份版本控制历史。
+# ⚙️ 任务 C: Dotfiles (安全模式, 完整备份)
 sync_task "$HOME/dotfiles" "dotfiles_Backup" "--modify-window 2s"
 
-# ================= 4. 清理与写入 =================
+# ================= 4. 清理与同步 =================
 echo "🧹 清理空目录..."
 rmdir --ignore-fail-on-non-empty -p "$TRASH_DIR_ROOT"/* 2>/dev/null
 rmdir --ignore-fail-on-non-empty "$TRASH_DIR_ROOT" 2>/dev/null
@@ -91,5 +77,33 @@ rmdir --ignore-fail-on-non-empty "$TRASH_DIR_ROOT" 2>/dev/null
 echo "💾 正在强制写入磁盘 (Syncing)..."
 sync
 
-echo ""
-echo "🎉 备份完成！请安全移除硬盘。"
+# ================= 5. 自动卸载与断电 (新增部分) =================
+echo "-----------------------------------------------------"
+echo "⏏️  [自动卸载] 正在尝试卸载硬盘..."
+
+# 检测当前脚本是否就在硬盘目录下运行（防止自己锁死自己）
+if [[ "$PWD" == *"$MOUNT_POINT"* ]]; then
+    echo "⚠️  检测到当前终端位于硬盘目录内，尝试切换回主目录..."
+    cd "$HOME" || exit
+fi
+
+# 尝试卸载
+if udisksctl unmount -b "$DEVICE_PARTITION"; then
+    echo "✅ 卸载成功！"
+    
+    echo "🔌 [自动断电] 正在让硬盘停转 (安全拔出模式)..."
+    # 获取父设备名 (比如 sdb1 -> sdb)，断电通常是对整个磁盘操作
+    PARENT_DISK="${DEVICE_PARTITION%[0-9]*}"
+    
+    if udisksctl power-off -b "$PARENT_DISK"; then
+        echo ""
+        echo "🎉🎉🎉 硬盘已安全断电，指示灯熄灭后请拔出。"
+    else
+        # 有些设备不支持 power-off，只要 unmount 成功也是安全的
+        echo "🎉 硬盘已卸载 (断电命令未生效，仍可安全拔出)。"
+    fi
+else
+    echo "❌ 卸载失败！硬盘正被占用。"
+    echo "👇 谁在占用？(如果是 fish/bash，请检查其他终端窗口)"
+    lsof +D "$MOUNT_POINT"
+fi
